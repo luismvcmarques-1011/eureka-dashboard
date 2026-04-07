@@ -472,18 +472,55 @@ async function init(){
   renderRegioes(new Set(['Pirassununga','Aguaí']));
 
   try{
-    const resp = await fetch(SHEETS.prefeituras);
-    const pref = csv(await resp.text()).slice(1).filter(r=>r[1]&&r[1].trim());
+    // Buscar as 3 abas em paralelo
+    const [rPipe, rPref, rHealth] = await Promise.all([
+      fetch(SHEETS.pipeline),
+      fetch(SHEETS.prefeituras),
+      fetch(SHEETS.health),
+    ]);
+    const pipe   = csv(await rPipe.text());
+    const pref   = csv(await rPref.text()).slice(1).filter(r=>r[1]&&r[1].trim());
+    const health = csv(await rHealth.text());
 
-    // Próximas visitas
+    // ── PIPELINE TRACKING: pegar última linha com semana (Wxx) ──
+    // L1: Meta Q2[1], B/W[3], %FST[5], SQL[7], R1[9]...
+    // L4+: Semana[0], Receita Potencial[1], Municípios[3]...
+    const l1 = pipe[0] || [];
+    const meta = parseFloat((l1[1]||'').replace(/[^0-9.-]/g,'')) || 1000000;
+    const bw   = parseFloat((l1[3]||'').replace(/[^0-9.-]/g,'')) || 0;
+
+    // Última semana com dados
+    let lastRow = null;
+    for(let i=pipe.length-1;i>=3;i--){
+      if(pipe[i][0]&&pipe[i][0].startsWith('W')&&pipe[i][1]){lastRow=pipe[i];break;}
+    }
+    if(lastRow){
+      const semana  = lastRow[0];
+      const receita = parseFloat((lastRow[1]||'').replace(/[^0-9.-]/g,'')) || 0;
+      const mun     = parseInt(lastRow[3]) || 0;
+      const metaPct = receita/meta*100;
+
+      document.getElementById('k-meta').textContent  = fmt(meta);
+      document.getElementById('k-fc').textContent    = fmt(receita);
+      document.getElementById('k-fcp').textContent   = `${metaPct.toFixed(1)}% da meta`;
+      document.getElementById('k-mun').textContent   = mun;
+      document.getElementById('k-sem').textContent   = semana;
+      document.getElementById('k-bw').textContent    = fmt(bw);
+      document.getElementById('wk-label').textContent= `${semana} · Q2 2026`;
+      document.getElementById('footer-wk').textContent=`${semana} · Q2 2026`;
+      document.getElementById('pg-v').innerHTML      = `${fmt(receita)} <span style="color:#475569;font-size:12px;font-weight:400">/ ${fmt(meta)}</span>`;
+      document.getElementById('pg-p').textContent    = `${metaPct.toFixed(1)}%`;
+      document.getElementById('pg-b').style.width    = `${Math.min(100,metaPct)}%`;
+      document.getElementById('pg-sub').textContent  = `Potencial total: ${fmt(receita)} · Meta: ${fmt(meta)}`;
+    }
+
+    // ── PRÓXIMAS VISITAS (SQL) ──
     renderVisitas(pref);
 
-    // Ativas no pipeline — linhas L26+ da aba Health
-    const respH = await fetch(SHEETS.health);
-    const health = csv(await respH.text());
-    // Linhas com municípios ativos começam em L26 (índice 25): [0]=Região [1]=Município
+    // ── HEALTH: municípios ativos (linhas a partir de L26) ──
     const ativosNomes = new Set(
-      health.slice(25).filter(r=>r[1]&&r[1].trim()&&r[1]!=='Município').map(r=>r[1].trim().replace(/^\xa0/,''))
+      health.slice(25).filter(r=>r[1]&&r[1].trim()&&r[1]!=='Município')
+            .map(r=>r[1].trim().replace(/^\xa0/,''))
     );
     if(ativosNomes.size>0){
       renderRegioes(ativosNomes);
