@@ -456,12 +456,13 @@ async function init(){
       fetch(URLS.pipeline),
       fetch(URLS.health),
       fetch(URLS.prefeituras),
-      fetch(URLS.dashboard)
+      fetch(URLS.dashboard).catch(function(){return {text:function(){return Promise.resolve('');}};}),
     ]);
     var pipe   = csv(await results[0].text());
     var health = csv(await results[1].text());
     var pref   = csv(await results[2].text()).slice(1).filter(function(r){return r[1]&&r[1].trim();});
-    var dash   = csv(await results[3].text());
+    var dashText = await results[3].text();
+    var dash   = dashText ? csv(dashText) : [];
 
     // ── DASHBOARD: KPIs do Mercado ──
     // dash.slice(1) remove header, rows: 0=RGMSP...17=Itapeva, depois TOTAL
@@ -559,11 +560,6 @@ async function init(){
     // cols: [0]=Região [1]=Cidade [2]=Alunos [3]=Faturamento [4]=Farol
     // Dashboard L43+ cidades: filtrar apenas linhas onde col[1]=cidade (texto, não número/R$)
     // e col[3]=faturamento > 0
-    console.log('DASH_ROWS total:', DASH_ROWS.length);
-    console.log('DASH_ROWS[40]:', DASH_ROWS[40]);
-    console.log('DASH_ROWS[41]:', DASH_ROWS[41]);
-    console.log('DASH_ROWS[42]:', DASH_ROWS[42]);
-    console.log('DASH_ROWS[43]:', DASH_ROWS[43]);
     TOP10_DATA = DASH_ROWS.filter(function(r){
       var cidade = (r[1]||'').trim();
       var fat = (r[3]||'').toString().trim();
