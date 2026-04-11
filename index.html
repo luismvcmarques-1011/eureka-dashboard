@@ -77,41 +77,20 @@ footer{border-top:1px solid #0f172a;padding:11px 20px;display:flex;justify-conte
 <!-- PIPELINE -->
 <div id="tab-pipeline" class="tab on fade">
   <div class="g4">
-    <div class="kpi" style="border:1px solid #3b82f628">
-      <div class="kl">Meta Q2</div>
-      <div class="kv" style="color:#3b82f6" id="k-meta">—</div>
-      <div class="ks">Receita potencial</div>
-    </div>
-    <div class="kpi" style="border:1px solid #10b98128;overflow:hidden">
-      <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#10b981,transparent);animation:shimmer 2.5s infinite"></div>
-      <div class="kl">Forecast Ajustado</div>
-      <div class="kv" style="color:#10b981" id="k-fc">—</div>
-      <div class="ks" id="k-fcp">—</div>
-    </div>
-    <div class="kpi" style="border:1px solid #8b5cf628">
-      <div class="kl">Municípios</div>
-      <div class="kv" style="color:#8b5cf6" id="k-mun">—</div>
-      <div class="ks" id="k-sem">—</div>
-    </div>
-    <div class="kpi" style="border:1px solid #3b82f628">
-      <div class="kl">Gap (B/W)</div>
-      <div class="kv" id="k-bw">—</div>
-      <div class="ks" id="k-bws">—</div>
-    </div>
+    <div class="kpi" style="border:1px solid #3b82f628"><div class="kl">Meta Q2</div><div class="kv" style="color:#3b82f6" id="k-meta">—</div><div class="ks">Receita potencial</div></div>
+    <div class="kpi" style="border:1px solid #10b98128"><div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#10b981,transparent);animation:shimmer 2.5s infinite"></div><div class="kl">Forecast Ajustado</div><div class="kv" style="color:#10b981" id="k-fc">—</div><div class="ks" id="k-fcp">—</div></div>
+    <div class="kpi" style="border:1px solid #8b5cf628"><div class="kl">Municípios</div><div class="kv" style="color:#8b5cf6" id="k-mun">—</div><div class="ks" id="k-sem">—</div></div>
+    <div class="kpi" style="border:1px solid #3b82f628"><div class="kl">Gap (B/W)</div><div class="kv" id="k-bw">—</div><div class="ks" id="k-bws">—</div></div>
   </div>
-
   <div class="card">
     <div class="ct">Progresso Meta Q2</div>
     <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:10px;flex-wrap:wrap;gap:6px">
       <div style="font-size:clamp(15px,4vw,20px);font-weight:700;font-family:'Syne',sans-serif" id="pg-v">—</div>
       <div style="color:#10b981;font-family:monospace;font-size:clamp(18px,5vw,26px);font-weight:700" id="pg-p">—</div>
     </div>
-    <div style="background:#1e293b;border-radius:99px;height:8px;overflow:hidden">
-      <div id="pg-b" style="width:0%;height:100%;background:linear-gradient(90deg,#3b82f6,#10b981);border-radius:99px;transition:width 1s ease"></div>
-    </div>
+    <div style="background:#1e293b;border-radius:99px;height:8px;overflow:hidden"><div id="pg-b" style="width:0%;height:100%;background:linear-gradient(90deg,#3b82f6,#10b981);border-radius:99px;transition:width 1s ease"></div></div>
     <div style="margin-top:7px;color:#475569;font-size:10px;font-family:monospace" id="pg-s">—</div>
   </div>
-
   <div class="gpipe">
     <div>
       <div class="ct">Municípios Ativos no Pipeline</div>
@@ -127,9 +106,7 @@ footer{border-top:1px solid #0f172a;padding:11px 20px;display:flex;justify-conte
             <span style="color:#f1f5f9;font-size:24px;font-weight:700;font-family:'Syne',sans-serif" id="vel-score">0.74</span>
             <span style="color:#475569;font-size:11px">/ 1.00</span>
           </div>
-          <div style="background:#1e293b;border-radius:99px;height:4px;overflow:hidden;margin-bottom:6px">
-            <div id="vel-bar" style="width:74%;height:100%;background:#8b5cf6;border-radius:99px"></div>
-          </div>
+          <div style="background:#1e293b;border-radius:99px;height:4px;overflow:hidden;margin-bottom:6px"><div style="width:74%;height:100%;background:#8b5cf6;border-radius:99px"></div></div>
           <div style="color:#475569;font-size:10px;font-family:monospace">Gargalo: <span style="color:#f59e0b">R1 → R2</span></div>
         </div>
         <div style="border-top:1px solid #1e293b;margin-top:12px;padding-top:12px">
@@ -142,7 +119,6 @@ footer{border-top:1px solid #0f172a;padding:11px 20px;display:flex;justify-conte
       </div>
     </div>
   </div>
-
   <div class="card">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;flex-wrap:wrap;gap:6px">
       <div class="ct" style="margin-bottom:0">Próximas Visitas Agendadas</div>
@@ -160,9 +136,9 @@ footer{border-top:1px solid #0f172a;padding:11px 20px;display:flex;justify-conte
     <div class="kpi" style="border:1px solid #10b98128"><div class="kl">TAM Anual</div><div class="kv" style="color:#10b981">R$2,6B</div><div class="ks">R$400-500/aluno</div></div>
   </div>
   <div class="g3">
-    <div class="kpi" style="border:1px solid #f59e0b28"><div class="kl">SOM Mapeado</div><div class="kv" style="color:#f59e0b" id="m-som">R$26,2M</div><div class="ks" id="m-mun">27 municípios</div></div>
-    <div class="kpi" style="border:1px solid #f59e0b28"><div class="kl">Alunos SOM</div><div class="kv" style="color:#f59e0b" id="m-alunos">59.569</div><div class="ks">do TAM</div></div>
-    <div class="kpi" style="border:1px solid #ef444428"><div class="kl">Penetração</div><div class="kv" style="color:#ef4444" id="m-pen">—</div><div class="ks">ativos/SOM</div></div>
+    <div class="kpi" style="border:1px solid #f59e0b28"><div class="kl">SOM Mapeado</div><div class="kv" style="color:#f59e0b" id="m-som">R$30,0M</div><div class="ks" id="m-mun">29 municípios</div></div>
+    <div class="kpi" style="border:1px solid #f59e0b28"><div class="kl">Alunos SOM</div><div class="kv" style="color:#f59e0b" id="m-alunos">67.980</div><div class="ks">do TAM</div></div>
+    <div class="kpi" style="border:1px solid #ef444428"><div class="kl">Penetração</div><div class="kv" style="color:#ef4444" id="m-pen">1,24%</div><div class="ks">ativos/SOM</div></div>
   </div>
   <div class="card">
     <div class="ct">Cobertura por Região</div>
@@ -177,16 +153,13 @@ footer{border-top:1px solid #0f172a;padding:11px 20px;display:flex;justify-conte
 <!-- COBERTURA -->
 <div id="tab-cobertura" class="tab fade">
   <div class="g3" style="margin-bottom:18px">
-    <div class="kpi" style="border:1px solid #f9731628"><div class="kl">Cidades Mapeadas</div><div class="kv" style="color:#f97316">27</div><div class="ks">Estado de SP</div></div>
-    <div class="kpi" style="border:1px solid #f9731628;overflow:hidden">
-      <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#f97316,transparent);animation:shimmer 2.5s infinite"></div>
-      <div class="kl">Ativas no Pipeline</div><div class="kv" style="color:#f97316" id="c-at">—</div><div class="ks" id="c-atn">—</div>
-    </div>
-    <div class="kpi" style="border:1px solid #3b82f628"><div class="kl">Receita Total SOM</div><div class="kv" style="color:#3b82f6">R$26,2M</div><div class="ks">Potencial das 27</div></div>
+    <div class="kpi" style="border:1px solid #f9731628"><div class="kl">Cidades Mapeadas</div><div class="kv" style="color:#f97316">29</div><div class="ks">Estado de SP</div></div>
+    <div class="kpi" style="border:1px solid #f9731628"><div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#f97316,transparent);animation:shimmer 2.5s infinite"></div><div class="kl">Ativas no Pipeline</div><div class="kv" style="color:#f97316" id="c-at">—</div><div class="ks" id="c-atn">—</div></div>
+    <div class="kpi" style="border:1px solid #3b82f628"><div class="kl">Receita Total SOM</div><div class="kv" style="color:#3b82f6">R$30,0M</div><div class="ks">Potencial das cidades</div></div>
   </div>
   <div class="card" style="padding:14px;margin-bottom:14px">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;flex-wrap:wrap;gap:6px">
-      <div class="ct" style="margin-bottom:0">Estado de São Paulo — 27 cidades</div>
+      <div class="ct" style="margin-bottom:0">Estado de São Paulo — cidades selecionadas</div>
       <span style="color:#f97316;font-size:10px;font-family:monospace">● tamanho = receita</span>
     </div>
     <div id="mapa"></div>
@@ -210,7 +183,7 @@ footer{border-top:1px solid #0f172a;padding:11px 20px;display:flex;justify-conte
     <div class="kpi" style="border:1px solid #f59e0b28"><div class="kl">% FUNDEB Médio (pond.)</div><div class="kv" style="color:#f59e0b">20,5%</div><div class="ks">Receita/FUNDEB disp.(40%)</div></div>
   </div>
   <div class="card">
-    <div class="ct">Cenários — 27 Municípios SOM</div>
+    <div class="ct">Cenários — SOM Mapeado</div>
     <div class="g3s">
       <div style="background:#64748b08;border:1px solid #64748b28;border-radius:12px;padding:14px 16px">
         <div style="color:#64748b;font-size:9px;font-family:monospace;letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px">Conservador</div>
@@ -250,6 +223,7 @@ const URLS = {
 
 const COR = {Q:'#ef4444', M:'#f59e0b', F:'#64748b'};
 const FL  = {Q:'Quente',  M:'Morno',   F:'Frio'};
+
 const FUNIL_ETAPAS = [
   {nome:'SQL',      peso:'25%', cor:'#64748b'},
   {nome:'R1',       peso:'30%', cor:'#3b82f6'},
@@ -257,63 +231,60 @@ const FUNIL_ETAPAS = [
   {nome:'R3',       peso:'50%', cor:'#f59e0b'},
   {nome:'Licitação',peso:'85%', cor:'#10b981'},
 ];
-// Regiões do Dashboard com municípios prioritários mapeados
-// cols Dashboard: [0]=Região [7]=# Municípios [8]=Penetração [9]=Alunos SOM [10]=Receita Anual
-const DASHBOARD_REGIOES = [
-  {nome:'RMGSP',        idx:0,  muns:['Osasco','Diadema','São Caetano do Sul','Franco da Rocha','Caieiras','Francisco Morato','Cajamar']},
-  {nome:'Baixada Sant.',idx:2,  muns:['Santos']},
-  {nome:'SJCampos',     idx:3,  muns:['São José dos Campos','Jacareí','São Sebastião','Caraguatatuba','Mogi das Cruzes']},
-  {nome:'Campinas',     idx:5,  muns:['Campinas','Paulínia','Pirassununga','Aguaí','São Carlos']},
-  {nome:'Bauru',        idx:7,  muns:['Itaí','Lins']},
-  {nome:'SJRPreto/Cat', idx:8,  muns:['Catanduva']},
-  {nome:'SJRPreto/Fern',idx:9,  muns:['Fernandópolis']},
-  {nome:'SJRPreto/Votu',idx:10, muns:['Votuporanga']},
-  {nome:'Araçatuba',    idx:11, muns:[]},
-  {nome:'PPrudente',    idx:12, muns:['Presidente Prudente']},
-  {nome:'Araraquara',   idx:14, muns:['São Carlos']},
-  {nome:'Itapeva',      idx:17, muns:['Itaí','Promissão','Penápolis','Novo Horizonte']},
+
+// Regiões com totais reais de municípios (contados nas abas regionais)
+// cols Dashboard: [0]=Região [7]=# Municípios [8]=Penetração [9]=Alunos [10]=Receita
+// Dashboard rows (após slice header): 0=RGMSP,1=Registro,2=BaixadaSant,3=SJCampos,
+// 4=Sorocaba,5=Campinas,6=RibPreto,7=Bauru,8=SJRPreto-Cat,9=SJRPreto-Fern,
+// 10=SJRPreto-Votu,11=Araçatuba,12=PPrudente,13=Marilia,14=Araraquara,
+// 15=Barretos,16=Franca,17=Itapeva
+const REGIOES_DEF = [
+  {nome:'RMGSP',      dashIdx:0,  tot:39, muns:['Osasco','Diadema','São Caetano do Sul','Franco da Rocha','Caieiras','Francisco Morato','Cajamar']},
+  {nome:'Baixada S.', dashIdx:2,  tot:9,  muns:['Santos']},
+  {nome:'SJCampos',   dashIdx:3,  tot:39, muns:['São José dos Campos','Jacareí','São Sebastião','Caraguatatuba','Mogi das Cruzes']},
+  {nome:'Campinas',   dashIdx:5,  tot:90, muns:['Campinas','Paulínia','Pirassununga','Aguaí','São Carlos','Promissão','Novo Horizonte']},
+  {nome:'Sorocaba',   dashIdx:4,  tot:48, muns:[]},
+  {nome:'Rib.Preto',  dashIdx:6,  tot:25, muns:[]},
+  {nome:'Bauru',      dashIdx:7,  tot:39, muns:['Itaí','Lins']},
+  {nome:'SJRPreto',   dashIdx:-1, tot:19, muns:['Catanduva','Fernandópolis','Votuporanga']},
+  {nome:'PPrudente',  dashIdx:12, tot:54, muns:['Presidente Prudente']},
+  {nome:'Araraquara', dashIdx:14, tot:26, muns:[]},
+  {nome:'Barretos',   dashIdx:15, tot:19, muns:[]},
+  {nome:'Franca',     dashIdx:16, tot:23, muns:[]},
+  {nome:'Itapeva',    dashIdx:17, tot:32, muns:['Penápolis','Novo Horizonte']},
 ];
-const REGIOES_MAP = {
-  'RMGSP':     ['Osasco','Diadema','São Caetano do Sul','Franco da Rocha','Caieiras','Francisco Morato','Cajamar'],
-  'Baixada Sant.':['Santos'],
-  'SJCampos':  ['São José dos Campos','Jacareí','São Sebastião','Caraguatatuba','Mogi das Cruzes'],
-  'Campinas':  ['Campinas','Paulínia','Pirassununga','Aguaí','São Carlos'],
-  'Bauru':     ['Itaí','Lins'],
-  'SJRPreto':  ['Catanduva','Fernandópolis','Votuporanga'],
-  'PPrudente': ['Presidente Prudente'],
-  'Araraquara':['São Carlos'],
-  'Itapeva':   ['Itaí','Promissão','Penápolis','Novo Horizonte'],
-};
+
 const CIDADES = [
-  {nome:'Pirassununga',   lat:-21.9959,lng:-47.4258,receita:1485000, farol:'Q'},
-  {nome:'Aguaí',          lat:-22.0621,lng:-46.9773,receita:1350000, farol:'M'},
-  {nome:'São Carlos',     lat:-22.0174,lng:-47.8908,receita:13464000,farol:'F'},
-  {nome:'Promissão',      lat:-21.5369,lng:-49.8603,receita:2056500, farol:'Q'},
-  {nome:'Itaí',           lat:-23.4167,lng:-48.9333,receita:1368000, farol:'Q'},
-  {nome:'São Caetano do Sul',lat:-23.6229,lng:-46.5525,receita:9135000,farol:'M'},
-  {nome:'Franco da Rocha',lat:-23.3219,lng:-46.7233,receita:8415000, farol:'M'},
-  {nome:'Caieiras',       lat:-23.3653,lng:-46.7417,receita:4635000, farol:'F'},
-  {nome:'Francisco Morato',lat:-23.2828,lng:-46.7433,receita:10125000,farol:'F'},
-  {nome:'Cajamar',        lat:-23.3575,lng:-46.8767,receita:5625000, farol:'F'},
-  {nome:'Osasco',         lat:-23.5325,lng:-46.7917,receita:41805000,farol:'F'},
-  {nome:'Diadema',        lat:-23.6861,lng:-46.6228,receita:19845000,farol:'M'},
-  {nome:'São Sebastião',  lat:-23.8122,lng:-45.4022,receita:4815000, farol:'M'},
-  {nome:'Caraguatatuba',  lat:-23.6194,lng:-45.4128,receita:7110000, farol:'F'},
-  {nome:'Mogi das Cruzes',lat:-23.5229,lng:-46.1875,receita:25965000,farol:'F'},
-  {nome:'Santos',         lat:-23.9608,lng:-46.3336,receita:22860000,farol:'F'},
-  {nome:'Campinas',       lat:-22.9056,lng:-47.0608,receita:60129000,farol:'F'},
-  {nome:'Paulínia',       lat:-22.7619,lng:-47.1533,receita:6120000, farol:'M'},
-  {nome:'Fernandópolis',  lat:-20.2831,lng:-50.2461,receita:3748500, farol:'F'},
-  {nome:'Votuporanga',    lat:-20.4231,lng:-49.9711,receita:5067000, farol:'F'},
-  {nome:'Penápolis',      lat:-21.4194,lng:-50.0778,receita:3325500, farol:'F'},
-  {nome:'Catanduva',      lat:-21.1378,lng:-48.9728,receita:6390000, farol:'F'},
+  {nome:'Pirassununga',       lat:-21.9959,lng:-47.4258,receita:1485000, farol:'Q'},
+  {nome:'Aguaí',              lat:-22.0621,lng:-46.9773,receita:1350000, farol:'M'},
+  {nome:'São Carlos',         lat:-22.0174,lng:-47.8908,receita:13464000,farol:'F'},
+  {nome:'Promissão',          lat:-21.5369,lng:-49.8603,receita:2056500, farol:'Q'},
+  {nome:'Itaí',               lat:-23.4167,lng:-48.9333,receita:1368000, farol:'Q'},
+  {nome:'São Caetano do Sul', lat:-23.6229,lng:-46.5525,receita:9135000, farol:'M'},
+  {nome:'Franco da Rocha',    lat:-23.3219,lng:-46.7233,receita:8415000, farol:'M'},
+  {nome:'Caieiras',           lat:-23.3653,lng:-46.7417,receita:4635000, farol:'F'},
+  {nome:'Francisco Morato',   lat:-23.2828,lng:-46.7433,receita:10125000,farol:'F'},
+  {nome:'Cajamar',            lat:-23.3575,lng:-46.8767,receita:5625000, farol:'F'},
+  {nome:'Osasco',             lat:-23.5325,lng:-46.7917,receita:41805000,farol:'F'},
+  {nome:'Diadema',            lat:-23.6861,lng:-46.6228,receita:19845000,farol:'M'},
+  {nome:'São Sebastião',      lat:-23.8122,lng:-45.4022,receita:4815000, farol:'M'},
+  {nome:'Caraguatatuba',      lat:-23.6194,lng:-45.4128,receita:7110000, farol:'F'},
+  {nome:'Mogi das Cruzes',    lat:-23.5229,lng:-46.1875,receita:25965000,farol:'F'},
+  {nome:'Santos',             lat:-23.9608,lng:-46.3336,receita:22860000,farol:'F'},
+  {nome:'Campinas',           lat:-22.9056,lng:-47.0608,receita:60129000,farol:'F'},
+  {nome:'Paulínia',           lat:-22.7619,lng:-47.1533,receita:6120000, farol:'M'},
+  {nome:'Fernandópolis',      lat:-20.2831,lng:-50.2461,receita:3748500, farol:'F'},
+  {nome:'Votuporanga',        lat:-20.4231,lng:-49.9711,receita:5067000, farol:'F'},
+  {nome:'Penápolis',          lat:-21.4194,lng:-50.0778,receita:3325500, farol:'F'},
+  {nome:'Catanduva',          lat:-21.1378,lng:-48.9728,receita:6390000, farol:'F'},
   {nome:'Presidente Prudente',lat:-22.1256,lng:-51.3889,receita:12141000,farol:'F'},
-  {nome:'Novo Horizonte', lat:-21.4669,lng:-49.2194,receita:2218500, farol:'F'},
+  {nome:'Novo Horizonte',     lat:-21.4669,lng:-49.2194,receita:2218500, farol:'F'},
   {nome:'São José dos Campos',lat:-23.1794,lng:-45.8869,receita:38880000,farol:'M'},
-  {nome:'Jacareí',        lat:-23.2997,lng:-45.9658,receita:12420000,farol:'F'},
-  {nome:'Lins',           lat:-21.6797,lng:-49.7483,receita:3955500, farol:'F'},
+  {nome:'Jacareí',            lat:-23.2997,lng:-45.9658,receita:12420000,farol:'F'},
+  {nome:'Lins',               lat:-21.6797,lng:-49.7483,receita:3955500, farol:'F'},
 ];
 const MAX_REC = Math.max(...CIDADES.map(c=>c.receita));
+let DASH_ROWS = [];
 
 // ── HELPERS ──────────────────────────────────────────────
 function csv(txt){
@@ -324,7 +295,6 @@ function csv(txt){
   });
 }
 function num(s){
-  // Limpa formato brasileiro: "R$ 2.032.350" ou "2.032,35"
   if(!s)return 0;
   let v=s.toString().replace(/R\$|\s/g,'');
   if(v.includes(','))v=v.replace(/\./g,'').replace(',','.');
@@ -333,18 +303,19 @@ function num(s){
 }
 function fmt(n){
   if(!n||isNaN(n))return'—';
-  return n>=1e6?`R$${(n/1e6).toFixed(1)}M`:n>=1e3?`R$${(n/1e3).toFixed(1)}k`:`R$${Math.round(n)}`;
+  return n>=1e6?'R$'+(n/1e6).toFixed(1)+'M':n>=1e3?'R$'+(n/1e3).toFixed(1)+'k':'R$'+Math.round(n);
 }
-function bar(v,max,cor,h=6){
-  const w=max>0?Math.min(100,(v/max)*100):0;
-  return `<div style="background:#1e293b;border-radius:99px;height:${h}px;overflow:hidden;width:100%"><div style="width:${w.toFixed(1)}%;height:100%;background:${cor};border-radius:99px;transition:width .8s ease"></div></div>`;
+function bar(v,max,cor,h){
+  h=h||6;
+  var w=max>0?Math.min(100,(v/max)*100):0;
+  return '<div style="background:#1e293b;border-radius:99px;height:'+h+'px;overflow:hidden;width:100%"><div style="width:'+w.toFixed(1)+'%;height:100%;background:'+cor+';border-radius:99px;transition:width .8s ease"></div></div>';
 }
 
 // ── NAVEGAÇÃO ─────────────────────────────────────────────
-let mapaInit=false;
+var mapaInit=false;
 function ST(id,btn){
-  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('on'));
-  document.querySelectorAll('nav button').forEach(b=>b.classList.remove('on'));
+  document.querySelectorAll('.tab').forEach(function(t){t.classList.remove('on');});
+  document.querySelectorAll('nav button').forEach(function(b){b.classList.remove('on');});
   document.getElementById('tab-'+id).classList.add('on');
   btn.classList.add('on');
   if(id==='cobertura'&&!mapaInit){initMapa();mapaInit=true;}
@@ -352,17 +323,18 @@ function ST(id,btn){
 
 // ── FUNIL ─────────────────────────────────────────────────
 function renderFunil(counts){
-  const max=Math.max(...counts,1);
-  document.getElementById('funil').innerHTML=FUNIL_ETAPAS.map((e,i)=>`
-    <div style="display:flex;align-items:center;gap:8px;margin-bottom:7px">
-      <div style="width:58px;color:#64748b;font-size:9px;font-family:monospace;text-align:right;flex-shrink:0">${e.nome}</div>
-      <div style="flex:1;background:#1e293b;border-radius:3px;height:24px;overflow:hidden">
-        <div style="width:${counts[i]>0?Math.max(8,(counts[i]/max)*100):2}%;height:100%;background:${counts[i]>0?e.cor:'transparent'};display:flex;align-items:center;padding-left:8px">
-          ${counts[i]>0?`<span style="color:#fff;font-size:11px;font-weight:700">${counts[i]}</span>`:''}
-        </div>
-      </div>
-      <div style="width:32px;color:#475569;font-size:9px;font-family:monospace;flex-shrink:0">${e.peso}</div>
-    </div>`).join('');
+  var max=Math.max.apply(null,counts.concat([1]));
+  document.getElementById('funil').innerHTML=FUNIL_ETAPAS.map(function(e,i){
+    return '<div style="display:flex;align-items:center;gap:8px;margin-bottom:7px">'
+      +'<div style="width:58px;color:#64748b;font-size:9px;font-family:monospace;text-align:right;flex-shrink:0">'+e.nome+'</div>'
+      +'<div style="flex:1;background:#1e293b;border-radius:3px;height:24px;overflow:hidden">'
+        +'<div style="width:'+(counts[i]>0?Math.max(8,(counts[i]/max)*100):2)+'%;height:100%;background:'+(counts[i]>0?e.cor:'transparent')+';display:flex;align-items:center;padding-left:8px">'
+          +(counts[i]>0?'<span style="color:#fff;font-size:11px;font-weight:700">'+counts[i]+'</span>':'')
+        +'</div>'
+      +'</div>'
+      +'<div style="width:32px;color:#475569;font-size:9px;font-family:monospace;flex-shrink:0">'+e.peso+'</div>'
+      +'</div>';
+  }).join('');
 }
 
 // ── CARDS MUNICÍPIOS ──────────────────────────────────────
@@ -371,92 +343,67 @@ function renderMunicipios(muns){
     document.getElementById('mun-cards').innerHTML='<div style="color:#475569;font-size:11px;font-family:monospace;padding:12px">Nenhum município ativo.</div>';
     return;
   }
-  document.getElementById('mun-cards').innerHTML=muns.map(m=>{
-    const cor=COR[m.farol]||'#64748b';
-    return `<div class="pcard" style="border-left:3px solid ${cor}">
-      <div style="display:flex;align-items:center;gap:7px;margin-bottom:5px;flex-wrap:wrap">
-        <span style="font-size:15px;font-weight:700;font-family:'Syne',sans-serif">${m.nome}</span>
-        <span class="badge" style="background:${cor}18;border:1px solid ${cor}40;color:${cor}"><span style="width:5px;height:5px;border-radius:50%;background:${cor};display:inline-block"></span>${FL[m.farol]||'—'}</span>
-        <span style="background:#1e293b;color:#7dd3fc;font-size:10px;padding:1px 6px;border-radius:4px;font-family:monospace">${m.status}</span>
-      </div>
-      <div style="color:#64748b;font-size:10px;font-family:monospace;margin-bottom:10px">${m.regiao} · ${m.alunos.toLocaleString('pt-BR')} alunos</div>
-      <div style="display:flex;gap:14px;flex-wrap:wrap;margin-bottom:10px">
-        <div><div style="color:#475569;font-size:9px;text-transform:uppercase;margin-bottom:2px">Potencial</div><div style="font-size:13px;font-weight:600">${fmt(m.receita)}</div></div>
-        <div><div style="color:#475569;font-size:9px;text-transform:uppercase;margin-bottom:2px">Ajustado</div><div style="color:#10b981;font-size:13px;font-weight:600">${fmt(m.ajustada)}</div></div>
-        <div><div style="color:#475569;font-size:9px;text-transform:uppercase;margin-bottom:2px">Dias na etapa</div><div style="color:#10b981;font-size:22px;font-weight:700;font-family:'Syne',sans-serif">${m.tempo}</div></div>
-      </div>
-      <div style="display:flex;justify-content:flex-end">
-        <div style="background:#10b98120;border:1px solid #10b98140;color:#10b981;padding:4px 10px;border-radius:6px;font-size:11px;font-family:monospace">↗ ${m.acao}</div>
-      </div>
-    </div>`;
+  document.getElementById('mun-cards').innerHTML=muns.map(function(m){
+    var cor=COR[m.farol]||'#64748b';
+    var fl=FL[m.farol]||'';
+    return '<div class="pcard" style="border-left:3px solid '+cor+'">'
+      +'<div style="display:flex;align-items:center;gap:7px;margin-bottom:5px;flex-wrap:wrap">'
+        +'<span style="font-size:15px;font-weight:700;font-family:\'Syne\',sans-serif">'+m.nome+'</span>'
+        +'<span class="badge" style="background:'+cor+'18;border:1px solid '+cor+'40;color:'+cor+'"><span style="width:5px;height:5px;border-radius:50%;background:'+cor+';display:inline-block"></span>'+fl+'</span>'
+        +'<span style="background:#1e293b;color:#7dd3fc;font-size:10px;padding:1px 6px;border-radius:4px;font-family:monospace">'+m.status+'</span>'
+      +'</div>'
+      +'<div style="color:#64748b;font-size:10px;font-family:monospace;margin-bottom:10px">'+m.regiao+' · '+m.alunos.toLocaleString('pt-BR')+' alunos</div>'
+      +'<div style="display:flex;gap:14px;flex-wrap:wrap;margin-bottom:10px">'
+        +'<div><div style="color:#475569;font-size:9px;text-transform:uppercase;margin-bottom:2px">Potencial</div><div style="font-size:13px;font-weight:600">'+fmt(m.recPot)+'</div></div>'
+        +'<div><div style="color:#475569;font-size:9px;text-transform:uppercase;margin-bottom:2px">Ajustado</div><div style="color:#10b981;font-size:13px;font-weight:600">'+fmt(m.receita)+'</div></div>'
+        +'<div><div style="color:#475569;font-size:9px;text-transform:uppercase;margin-bottom:2px">Dias na etapa</div><div style="color:#10b981;font-size:22px;font-weight:700;font-family:\'Syne\',sans-serif">'+m.tempo+'</div></div>'
+      +'</div>'
+      +'<div style="display:flex;justify-content:flex-end">'
+        +'<div style="background:#10b98120;border:1px solid #10b98140;color:#10b981;padding:4px 10px;border-radius:6px;font-size:11px;font-family:monospace">↗ '+m.acao+'</div>'
+      +'</div>'
+      +'</div>';
   }).join('');
 }
 
 // ── VISITAS SQL ───────────────────────────────────────────
-function renderVisitas(pref){
-  // cols pref: [0]=idx [1]=nome [4]=indicação [5]=farol [6]=alunos [8]=status [9]=receita [10]=%fundeb
-  const vis=pref.filter(r=>(r[8]||'').toUpperCase().trim()==='SQL');
-  document.getElementById('vis-badge').textContent=`● ${vis.length} agendada${vis.length!==1?'s':''}`;
-  if(!vis.length){
-    document.getElementById('vis-cards').innerHTML='<div style="color:#475569;font-size:11px;font-family:monospace;text-align:center;padding:16px">Nenhuma visita agendada.<br>Adicione <strong style="color:#3b82f6">SQL</strong> na coluna Status da aba Prefeituras Prioritárias.</div>';
+function renderVisitas(sqlMuns){
+  document.getElementById('vis-badge').textContent='● '+sqlMuns.length+' agendada'+(sqlMuns.length!==1?'s':'');
+  if(!sqlMuns.length){
+    document.getElementById('vis-cards').innerHTML='<div style="color:#475569;font-size:11px;font-family:monospace;text-align:center;padding:16px">Nenhuma visita agendada. Adicione SQL na coluna Status da aba Health.</div>';
     return;
   }
-  document.getElementById('vis-cards').innerHTML=`
-    <div style="display:grid;grid-template-columns:repeat(${Math.min(vis.length,5)},1fr);gap:10px">
-      ${vis.map(r=>{
-        const cor=COR[r[5]]||'#64748b';
-        return `<div style="background:#0f172a;border-top:2px solid ${cor};border:1px solid ${cor}20;border-radius:10px;padding:11px 12px">
-          <div style="font-family:'Syne',sans-serif;font-size:11px;font-weight:700;margin-bottom:5px;color:#f1f5f9">${r[1]}</div>
-          <span class="badge" style="background:${cor}18;border:1px solid ${cor}40;color:${cor};margin-bottom:7px;display:inline-flex"><span style="width:5px;height:5px;border-radius:50%;background:${cor};display:inline-block"></span>${FL[r[5]]||'—'}</span>
-          <div style="color:#10b981;font-family:monospace;font-size:12px;font-weight:600;margin-bottom:2px">${fmt(num(r[9]))}</div>
-          <div style="color:#475569;font-size:9px;font-family:monospace">${parseInt(r[6]).toLocaleString('pt-BR')} alunos</div>
-          <div style="color:#334155;font-size:9px;font-family:monospace;margin-top:2px">${(num(r[10])*100).toFixed(1)}% FUNDEB</div>
-          <div style="margin-top:6px;background:#1e293b;border-radius:3px;padding:1px 5px;display:inline-block;color:#64748b;font-size:9px;font-family:monospace">via ${r[4]}</div>
-        </div>`;
-      }).join('')}
-    </div>`;
+  var cols='repeat('+Math.min(sqlMuns.length,5)+',1fr)';
+  var html='<div style="display:grid;grid-template-columns:'+cols+';gap:10px">';
+  sqlMuns.forEach(function(m){
+    var cor=COR[m.farol]||'#64748b';
+    var fl=FL[m.farol]||'';
+    html+='<div style="background:#0f172a;border-top:2px solid '+cor+';border:1px solid '+cor+'20;border-radius:10px;padding:11px 12px">'
+      +'<div style="font-size:11px;font-weight:700;margin-bottom:5px;color:#f1f5f9">'+m.nome+'</div>'
+      +'<span class="badge" style="background:'+cor+'18;border:1px solid '+cor+'40;color:'+cor+';margin-bottom:7px;display:inline-flex"><span style="width:5px;height:5px;border-radius:50%;background:'+cor+';display:inline-block"></span>'+fl+'</span>'
+      +'<div style="color:#10b981;font-family:monospace;font-size:12px;font-weight:600;margin-bottom:2px">'+fmt(m.receita)+'</div>'
+      +'<div style="color:#475569;font-size:9px;font-family:monospace">'+m.alunos.toLocaleString('pt-BR')+' alunos</div>'
+      +'<div style="color:#475569;font-size:9px;font-family:monospace;margin-top:2px">'+m.regiao+'</div>'
+      +'</div>';
+  });
+  html+='</div>';
+  document.getElementById('vis-cards').innerHTML=html;
 }
 
 // ── REGIÕES ───────────────────────────────────────────────
-let DASH_DATA = []; // dados da aba Dashboard
-
 function renderRegioes(ativosSet){
-  // Linhas do Dashboard: L15=idx0(RGMSP), L16=idx1, ..., L32=idx17, L34=idx19(TOTAL)
-  // idx no array dash (após slice do header em L14):
-  // 0=RGMSP,1=Registro,2=BaixadaSant,3=SJCampos,4=Sorocaba,5=Campinas,
-  // 6=RibPreto,7=Bauru,8=SJRPreto-Cat,9=SJRPreto-Fern,10=SJRPreto-Votu,
-  // 11=Aracatuba,12=PPrudente,13=Marilia,14=Araraquara,15=Barretos,16=Franca,17=Itapeva
-  const rows = DASH_DATA;
-  // Totais reais de municípios por região (contados nas abas regionais)
-  const regioes = [
-    {nome:'RMGSP',      row:rows[0],  tot:39, muns:['Osasco','Diadema','São Caetano do Sul','Franco da Rocha','Caieiras','Francisco Morato','Cajamar']},
-    {nome:'Baixada S.', row:rows[2],  tot:9,  muns:['Santos']},
-    {nome:'SJCampos',   row:rows[3],  tot:39, muns:['São José dos Campos','Jacareí','São Sebastião','Caraguatatuba','Mogi das Cruzes']},
-    {nome:'Campinas',   row:rows[5],  tot:90, muns:['Campinas','Paulínia','Pirassununga','Aguaí','São Carlos','Promissão','Novo Horizonte']},
-    {nome:'Sorocaba',   row:rows[4],  tot:48, muns:[]},
-    {nome:'Rib.Preto',  row:null,     tot:25, muns:[]},
-    {nome:'Bauru',      row:rows[7],  tot:39, muns:['Itaí','Lins']},
-    {nome:'SJRPreto',   row:null,     tot:17+1+1, muns:['Catanduva','Fernandópolis','Votuporanga']},
-    {nome:'PPrudente',  row:rows[12], tot:54, muns:['Presidente Prudente']},
-    {nome:'Araraquara', row:rows[14], tot:26, muns:[]},
-    {nome:'Barretos',   row:rows[15], tot:19, muns:[]},
-    {nome:'Franca',     row:rows[16], tot:23, muns:[]},
-    {nome:'Itapeva',    row:rows[17], tot:32, muns:['Penápolis','Novo Horizonte']},
-  ];
-
-  document.getElementById('regioes').innerHTML=regioes.map(r=>{
-    const at=r.muns.filter(m=>ativosSet.has(m)).length;
-    const rec=r.row?num(r.row[10]):0;
-    const tot=r.tot||0; // total real de municípios da região
-    const maxTot=Math.max(tot,1);
+  document.getElementById('regioes').innerHTML=REGIOES_DEF.map(function(r){
+    var at=r.muns.filter(function(m){return ativosSet.has(m);}).length;
+    var row=r.dashIdx>=0?DASH_ROWS[r.dashIdx]:null;
+    var rec=row?num(row[10]):0;
+    var tot=r.tot;
     return '<div class="grow" style="border-bottom:1px solid #0f172a">'
       +'<div style="font-weight:600;font-size:12px">'+r.nome+'</div>'
-      +bar(at,maxTot,at>0?'#3b82f6':'#1e293b',6)
+      +bar(at,tot,at>0?'#3b82f6':'#1e293b',6)
       +'<div style="color:#10b981;font-family:monospace;font-size:11px;text-align:right">'+(rec>0?fmt(rec):'—')+'</div>'
       +'<div style="text-align:right">'
         +(at>0
           ?'<span style="background:#3b82f618;color:#7dd3fc;padding:1px 6px;border-radius:4px;font-size:10px;font-family:monospace">'+at+'/'+tot+'</span>'
-          :(tot>0?'<span style="color:#334155;font-size:10px;font-family:monospace">0/'+tot+'</span>':'<span style="color:#334155">—</span>'))
+          :'<span style="color:#334155;font-size:10px;font-family:monospace">0/'+tot+'</span>')
       +'</div>'
       +'</div>';
   }).join('');
@@ -464,39 +411,34 @@ function renderRegioes(ativosSet){
 
 // ── TOP 10 ────────────────────────────────────────────────
 function renderTop10(ativosSet){
-  const top=[...CIDADES].sort((a,b)=>b.receita-a.receita).slice(0,10);
-  document.getElementById('top10').innerHTML=top.map((c,i)=>{
-    const at=ativosSet.has(c.nome);
-    const cor=at?'#f97316':COR[c.farol];
-    return `<div style="display:flex;align-items:center;gap:12px;margin-bottom:8px">
-      <div style="width:20px;color:#334155;font-size:10px;font-family:monospace;text-align:right;flex-shrink:0">${i+1}</div>
-      <div style="width:160px;color:${at?'#f97316':'#94a3b8'};font-size:12px;font-family:'Syne',sans-serif;font-weight:${at?700:400};flex-shrink:0">${c.nome}${at?' ●':''}</div>
-      <div style="flex:1">${bar(c.receita,MAX_REC,cor,6)}</div>
-      <div style="width:66px;color:#10b981;font-family:monospace;font-size:11px;text-align:right;flex-shrink:0">${fmt(c.receita)}</div>
-    </div>`;
+  var top=CIDADES.slice().sort(function(a,b){return b.receita-a.receita;}).slice(0,10);
+  document.getElementById('top10').innerHTML=top.map(function(c,i){
+    var at=ativosSet.has(c.nome);
+    var cor=at?'#f97316':COR[c.farol];
+    return '<div style="display:flex;align-items:center;gap:12px;margin-bottom:8px">'
+      +'<div style="width:20px;color:#334155;font-size:10px;font-family:monospace;text-align:right;flex-shrink:0">'+(i+1)+'</div>'
+      +'<div style="width:160px;color:'+(at?'#f97316':'#94a3b8')+';font-size:12px;font-family:\'Syne\',sans-serif;font-weight:'+(at?700:400)+';flex-shrink:0">'+c.nome+(at?' ●':'')+'</div>'
+      +'<div style="flex:1">'+bar(c.receita,MAX_REC,cor,6)+'</div>'
+      +'<div style="width:66px;color:#10b981;font-family:monospace;font-size:11px;text-align:right;flex-shrink:0">'+fmt(c.receita)+'</div>'
+      +'</div>';
   }).join('');
 }
 
 // ── MAPA ──────────────────────────────────────────────────
 function initMapa(){
-  const map=L.map('mapa',{center:[-22.5,-48.5],zoom:7,zoomControl:true,scrollWheelZoom:false});
+  var map=L.map('mapa',{center:[-22.5,-48.5],zoom:7,zoomControl:true,scrollWheelZoom:false});
   L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',{attribution:'© CARTO',subdomains:'abcd',maxZoom:19}).addTo(map);
   fetch('https://raw.githubusercontent.com/codeforgermany/click_that_hood/main/public/data/brazil-states.geojson')
-    .then(r=>r.json()).then(g=>{
-      const sp=g.features.find(f=>(f.properties.name||'').includes('Paulo'));
+    .then(function(r){return r.json();}).then(function(g){
+      var sp=g.features.find(function(f){return(f.properties.name||'').includes('Paulo');});
       if(sp)L.geoJSON(sp,{style:{color:'#3b82f6',weight:2,opacity:.85,fillColor:'#1e3a5f',fillOpacity:.18}}).addTo(map);
-    }).catch(()=>{});
-  const ativas=new Set(CIDADES.filter(c=>c.ativa).map(c=>c.nome));
-  [...CIDADES].sort((a,b)=>b.receita-a.receita).forEach(c=>{
-    const r=6+(c.receita/MAX_REC)*26;
-    const cor=c.ativa?'#f97316':COR[c.farol];
+    }).catch(function(){});
+  CIDADES.slice().sort(function(a,b){return b.receita-a.receita;}).forEach(function(c){
+    var r=6+(c.receita/MAX_REC)*26;
+    var cor=c.ativa?'#f97316':COR[c.farol];
     if(c.ativa)L.circleMarker([c.lat,c.lng],{radius:r+6,fillColor:'transparent',fillOpacity:0,color:'#f97316',weight:1.5,opacity:.5}).addTo(map);
     L.circleMarker([c.lat,c.lng],{radius:r,fillColor:cor,fillOpacity:c.ativa?.92:.72,color:c.ativa?'#fff':cor,weight:c.ativa?2:.5})
-      .addTo(map).bindPopup(`<div style="background:#0f172a;border:1px solid #3b82f660;border-radius:8px;padding:10px 14px;color:#f1f5f9;font-family:system-ui;min-width:130px">
-        <div style="font-weight:700;font-size:13px;margin-bottom:3px">${c.nome}</div>
-        <div style="color:#10b981;font-size:11px;margin-bottom:2px">${fmt(c.receita)}</div>
-        <div style="color:${cor};font-size:11px">${c.ativa?'● Pipeline ativo':'● '+FL[c.farol]}</div>
-      </div>`);
+      .addTo(map).bindPopup('<div style="background:#0f172a;border:1px solid #3b82f660;border-radius:8px;padding:10px 14px;color:#f1f5f9;font-family:system-ui;min-width:130px"><div style="font-weight:700;font-size:13px;margin-bottom:3px">'+c.nome+'</div><div style="color:#10b981;font-size:11px;margin-bottom:2px">'+fmt(c.receita)+'</div><div style="color:'+cor+';font-size:11px">'+(c.ativa?'● Pipeline ativo':'● '+FL[c.farol])+'</div></div>');
   });
 }
 
@@ -506,144 +448,125 @@ async function init(){
   renderRegioes(new Set());
   renderTop10(new Set());
 
-  try{
-    const [rP,rH,rPref,rDash]=await Promise.all([
-      fetch(URLS.pipeline),fetch(URLS.health),fetch(URLS.prefeituras),fetch(URLS.dashboard)
+  try {
+    var results = await Promise.all([
+      fetch(URLS.pipeline),
+      fetch(URLS.health),
+      fetch(URLS.prefeituras),
+      fetch(URLS.dashboard)
     ]);
-    const pipe=csv(await rP.text());
-    const health=csv(await rH.text());
-    const pref=csv(await rPref.text()).slice(1).filter(r=>r[1]&&r[1].trim());
-    const dash=csv(await rDash.text());
+    var pipe   = csv(await results[0].text());
+    var health = csv(await results[1].text());
+    var pref   = csv(await results[2].text()).slice(1).filter(function(r){return r[1]&&r[1].trim();});
+    var dash   = csv(await results[3].text());
 
-    // Dashboard: L14=header(idx0), L15=RGMSP(idx1)... L34=TOTAL(idx20)
-    // slice(1) removes header row, then rows 0=RGMSP...17=Itapeva, 19=TOTAL
-    DASH_DATA = dash.slice(1);
-    const totalRow = DASH_DATA.find(r=>(r[0]||'').toString().toUpperCase().includes('TOTAL'));
-    console.log('Dashboard totalRow:', totalRow ? totalRow.slice(0,12) : 'NOT FOUND');
-    if(totalRow){
-      const somVal   = num(totalRow[10]);
-      const alunosVal= num(totalRow[9]);
-      const munVal   = parseInt(totalRow[7])||29;
-      const penVal   = parseFloat(totalRow[8])*100||0;
-      document.getElementById('m-som').textContent    = fmt(somVal);
-      document.getElementById('m-alunos').textContent = Math.round(alunosVal).toLocaleString('pt-BR');
-      document.getElementById('m-mun').textContent    = munVal+' municípios';
-      document.getElementById('m-pen').textContent    = penVal.toFixed(2)+'%';
+    // ── DASHBOARD: KPIs do Mercado ──
+    // dash.slice(1) remove header, rows: 0=RGMSP...17=Itapeva, depois TOTAL
+    DASH_ROWS = dash.slice(1);
+    var totalRow = null;
+    for(var i=0;i<DASH_ROWS.length;i++){
+      if((DASH_ROWS[i][0]||'').toUpperCase().includes('TOTAL')){totalRow=DASH_ROWS[i];break;}
     }
+    if(totalRow){
+      document.getElementById('m-som').textContent    = fmt(num(totalRow[10]));
+      document.getElementById('m-alunos').textContent = Math.round(num(totalRow[9])).toLocaleString('pt-BR');
+      document.getElementById('m-mun').textContent    = (parseInt(totalRow[7])||29)+' municípios';
+      document.getElementById('m-pen').textContent    = (parseFloat(totalRow[8])*100).toFixed(2)+'%';
     }
 
     // ── PIPELINE TRACKING: última semana ──
-    // Header em L4 (idx 3): [0]=Semana [1]=Receita [3]=Municípios
-    // L1 (idx 0): [1]=Meta Q2
-    const meta=num(pipe[0]?.[1])||1000000;
-    let lastRow=null, lastW=-1;
-    pipe.forEach(r=>{
-      const w=(r[0]||'').trim();
+    var meta = num(pipe[0]?pipe[0][1]:null)||1000000;
+    var lastRow=null, lastW=-1;
+    pipe.forEach(function(r){
+      var w=(r[0]||'').trim();
       if(/^W\d+$/.test(w)){
-        const n=parseInt(w.slice(1));
+        var n=parseInt(w.slice(1));
         if(n>lastW&&r[1]){lastW=n;lastRow=r;}
       }
     });
-
     if(lastRow){
-      const semana=lastRow[0];
-      const receita=num(lastRow[1]);
-      const mun=parseInt(lastRow[3])||0;
-      const pct=receita/meta*100;
-      const gap=receita-meta;
-
-      document.getElementById('k-meta').textContent=fmt(meta);
-      document.getElementById('k-fc').textContent=fmt(receita);
-      document.getElementById('k-fcp').textContent=`${pct.toFixed(1)}% da meta`;
-      document.getElementById('k-mun').textContent=mun;
-      document.getElementById('k-sem').textContent=semana;
-      document.getElementById('wk').textContent=`${semana} · Q2 2026`;
-      document.getElementById('footer-wk').textContent=`${semana} · Q2 2026`;
-      document.getElementById('pg-v').innerHTML=`${fmt(receita)} <span style="color:#475569;font-size:12px;font-weight:400">/ ${fmt(meta)}</span>`;
-      document.getElementById('pg-p').textContent=`${pct.toFixed(1)}%`;
-      document.getElementById('pg-b').style.width=`${Math.min(100,pct)}%`;
-      document.getElementById('pg-s').textContent=`${fmt(receita)} de ${fmt(meta)} · ${semana}`;
-
-      // Gap
-      const bwEl=document.getElementById('k-bw');
-      const bwSub=document.getElementById('k-bws');
+      var semana  = lastRow[0];
+      var receita = num(lastRow[1]);
+      var mun     = parseInt(lastRow[3])||0;
+      var pct     = receita/meta*100;
+      var gap     = receita-meta;
+      document.getElementById('k-meta').textContent  = fmt(meta);
+      document.getElementById('k-fc').textContent    = fmt(receita);
+      document.getElementById('k-fcp').textContent   = pct.toFixed(1)+'% da meta';
+      document.getElementById('k-mun').textContent   = mun;
+      document.getElementById('k-sem').textContent   = semana;
+      document.getElementById('wk').textContent      = semana+' · Q2 2026';
+      document.getElementById('footer-wk').textContent = semana+' · Q2 2026';
+      document.getElementById('pg-v').innerHTML      = fmt(receita)+' <span style="color:#475569;font-size:12px;font-weight:400">/ '+fmt(meta)+'</span>';
+      document.getElementById('pg-p').textContent    = pct.toFixed(1)+'%';
+      document.getElementById('pg-b').style.width    = Math.min(100,pct)+'%';
+      document.getElementById('pg-s').textContent    = fmt(receita)+' de '+fmt(meta)+' · '+semana;
+      var bwEl  = document.getElementById('k-bw');
+      var bwSub = document.getElementById('k-bws');
       if(gap>=0){
-        bwEl.textContent=`+${fmt(gap)}`;
-        bwEl.style.color='#3b82f6';
+        bwEl.textContent='+'+fmt(gap); bwEl.style.color='#3b82f6';
         bwSub.textContent='🎯 acima da meta';
       } else {
-        bwEl.textContent=`-${fmt(Math.abs(gap))}`;
-        bwEl.style.color='#f59e0b';
+        bwEl.textContent='-'+fmt(Math.abs(gap)); bwEl.style.color='#f59e0b';
         bwSub.textContent='Falta fechar';
       }
     }
 
     // ── HEALTH: municípios ativos ──
-    // L26 (idx 25) = header, L27+ = dados
+    // L26(idx25)=header, L27+(idx26+)=dados
     // cols: [0]=Região [1]=Município [2]=Farol [3]=Alunos [6]=Receita Pot [7]=Status [8]=Tempo [10]=Ajustada [13]=Ação
-    const healthMuns=health.slice(26)
-      .filter(r=>r[1]&&r[1].trim()&&r[1].trim()!=='Município')
-      .map(r=>({
-        regiao: r[0]||'',
-        nome:   r[1].trim().replace(/^\u00a0/,''),
-        farol:  r[2]||'F',
-        alunos: parseInt(r[3])||0,
-        receita:num(r[10]),
-        receitaPot:num(r[6]),
-        status: (r[7]||'').trim(),
-        tempo:  parseInt(r[8])||0,
-        ajustada:num(r[10]),
-        acao:   r[13]||'Nutrir',
-      }));
+    var healthMuns = health.slice(26)
+      .filter(function(r){return r[1]&&r[1].trim()&&r[1].trim()!=='Município';})
+      .map(function(r){
+        return {
+          regiao:  r[0]||'',
+          nome:    r[1].trim().replace(/^\u00a0/,''),
+          farol:   r[2]||'F',
+          alunos:  parseInt(r[3])||0,
+          recPot:  num(r[6]),
+          receita: num(r[10]),
+          status:  (r[7]||'').trim(),
+          tempo:   parseInt(r[8])||0,
+          acao:    r[13]||'Nutrir',
+        };
+      });
 
-    // Funil conta por status
-    const cnts=['SQL','R1','R2','R3','Licitação'].map(s=>healthMuns.filter(m=>m.status===s).length);
+    // Funil por status
+    var cnts = ['SQL','R1','R2','R3','Licitação'].map(function(s){
+      return healthMuns.filter(function(m){return m.status===s;}).length;
+    });
     renderFunil(cnts);
 
     // Cards — só R1 e acima
-    const ativos = healthMuns.filter(m=>m.status!=='SQL');
-    renderMunicipios(ativos);
+    renderMunicipios(healthMuns.filter(function(m){return m.status!=='SQL';}));
+
+    // Visitas SQL
+    renderVisitas(healthMuns.filter(function(m){return m.status==='SQL';}));
 
     // Cobertura
-    const ativosSet=new Set(healthMuns.map(m=>m.nome));
-    document.getElementById('c-at').textContent=healthMuns.length;
-    document.getElementById('c-atn').textContent=healthMuns.map(m=>m.nome).join(' · ');
-    // penetração já calculada pelo Dashboard acima
+    var ativosSet = new Set(healthMuns.map(function(m){return m.nome;}));
+    document.getElementById('c-at').textContent  = healthMuns.length;
+    document.getElementById('c-atn').textContent = healthMuns.map(function(m){return m.nome;}).join(' · ');
     renderRegioes(ativosSet);
     renderTop10(ativosSet);
 
-    // Mapa — marcar ativas
-    CIDADES.forEach(c=>c.ativa=ativosSet.has(c.nome));
+    // Mapa
+    CIDADES.forEach(function(c){c.ativa=ativosSet.has(c.nome);});
 
-    // Visitas SQL — da aba Health apenas
-    const sqlHealth = healthMuns.filter(m=>m.status==='SQL');
-    document.getElementById('vis-badge').textContent='● '+sqlHealth.length+' agendada'+(sqlHealth.length!==1?'s':'');
-    if(sqlHealth.length===0){
-      document.getElementById('vis-cards').innerHTML='<div style="color:#475569;font-size:11px;font-family:monospace;text-align:center;padding:16px">Nenhuma visita agendada. Adicione SQL na coluna Status da aba Health.</div>';
-    } else {
-      let vhtml='<div style="display:grid;grid-template-columns:repeat('+Math.min(sqlHealth.length,5)+',1fr);gap:10px">';
-      sqlHealth.forEach(function(m){
-        const cor=COR[m.farol]||'#64748b';
-        vhtml+='<div style="background:#0f172a;border-top:2px solid '+cor+';border:1px solid '+cor+'20;border-radius:10px;padding:11px 12px">';
-        vhtml+='<div style="font-size:11px;font-weight:700;margin-bottom:5px;color:#f1f5f9">'+m.nome+'</div>';
-        vhtml+='<div style="color:#10b981;font-family:monospace;font-size:12px;font-weight:600;margin-bottom:4px">'+fmt(m.receita)+'</div>';
-        vhtml+='<div style="color:#475569;font-size:9px;font-family:monospace">'+m.alunos.toLocaleString('pt-BR')+' alunos</div>';
-        vhtml+='<div style="color:#475569;font-size:9px;font-family:monospace;margin-top:2px">'+m.regiao+'</div>';
-        vhtml+='</div>';
-      });
-      vhtml+='</div>';
-      document.getElementById('vis-cards').innerHTML=vhtml;
-    }
+    var s=document.getElementById('sync');
+    s.textContent='✓ atualizado';
+    s.style.color='#10b981';
+    s.style.background='#10b98115';
+    s.style.borderColor='#10b98130';
 
-    const s=document.getElementById('sync');
-    s.textContent='✓ atualizado';s.style.color='#10b981';s.style.background='#10b98115';s.style.borderColor='#10b98130';
-
-  }catch(e){
+  } catch(e) {
     console.error(e);
-    const s=document.getElementById('sync');
-    s.textContent='⚠ offline';s.style.color='#f59e0b';
+    var s=document.getElementById('sync');
+    s.textContent='⚠ offline';
+    s.style.color='#f59e0b';
   }
 }
+
 init();
 </script>
 </body>
