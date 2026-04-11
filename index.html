@@ -557,8 +557,15 @@ async function init(){
 
     // Top 10 da aba Dashboard — L43+ (idx 42 no array após slice(1))
     // cols: [0]=Região [1]=Cidade [2]=Alunos [3]=Faturamento [4]=Farol
-    TOP10_DATA = DASH_ROWS.slice(42).filter(function(r){
-      return r[1]&&r[1].trim()&&r[3]&&num(r[3])>0;
+    // Dashboard L43+ cidades: filtrar apenas linhas onde col[1]=cidade (texto, não número/R$)
+    // e col[3]=faturamento > 0
+    TOP10_DATA = DASH_ROWS.filter(function(r){
+      var cidade = (r[1]||'').trim();
+      var fat = (r[3]||'').toString().trim();
+      // Cidade deve ser texto sem R$ e sem ser número puro
+      return cidade && !cidade.includes('R$') && !cidade.match(/^[0-9]/) 
+          && cidade !== 'Cidade' && fat && num(fat) > 0
+          && r[0] && !r[0].toString().includes('Região') && !r[0].toString().includes('Cenário');
     }).map(function(r){
       return {nome:r[1].trim(), receita:num(r[3]), farol:(r[4]||'F').trim()};
     }).sort(function(a,b){return b.receita-a.receita;}).slice(0,10);
