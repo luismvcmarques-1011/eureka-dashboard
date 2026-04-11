@@ -523,6 +523,8 @@ async function init(){
 
     // ── FINANCEIRO: % FUNDEB ponderado e cenários ──
     // % FUNDEB ponderado por alunos: col[6]=alunos, col[10]=%fundeb (no Sheets com col Status)
+    console.log('pref[0] cols:', pref[0]);
+    console.log('pref[1] cols:', pref[1]);
     var totAlu=0, totPond=0;
     pref.forEach(function(r){
       var al=parseFloat(r[6])||0;
