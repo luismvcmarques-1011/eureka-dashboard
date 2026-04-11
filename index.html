@@ -434,7 +434,7 @@ function renderRegioes(ativosSet){
     {nome:'SJCampos',   row:rows[3],  tot:39, muns:['São José dos Campos','Jacareí','São Sebastião','Caraguatatuba','Mogi das Cruzes']},
     {nome:'Campinas',   row:rows[5],  tot:90, muns:['Campinas','Paulínia','Pirassununga','Aguaí','São Carlos','Promissão','Novo Horizonte']},
     {nome:'Sorocaba',   row:rows[4],  tot:48, muns:[]},
-    {nome:'Rib.Preto',  row:rows[6],  tot:25, muns:[]},
+    {nome:'Rib.Preto',  row:null,     tot:25, muns:[]},
     {nome:'Bauru',      row:rows[7],  tot:39, muns:['Itaí','Lins']},
     {nome:'SJRPreto',   row:null,     tot:17+1+1, muns:['Catanduva','Fernandópolis','Votuporanga']},
     {nome:'PPrudente',  row:rows[12], tot:54, muns:['Presidente Prudente']},
@@ -606,7 +606,7 @@ async function init(){
     const ativosSet=new Set(healthMuns.map(m=>m.nome));
     document.getElementById('c-at').textContent=healthMuns.length;
     document.getElementById('c-atn').textContent=healthMuns.map(m=>m.nome).join(' · ');
-    document.getElementById('m-pen').textContent=`${((healthMuns.length/27)*100).toFixed(1)}%`;
+    // penetração já calculada pelo Dashboard acima
     renderRegioes(ativosSet);
     renderTop10(ativosSet);
 
