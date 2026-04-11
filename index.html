@@ -410,19 +410,22 @@ function renderRegioes(ativosSet){
 }
 
 // ── TOP 10 ────────────────────────────────────────────────
+var TOP10_DATA = [];
 function renderTop10(ativosSet){
-  var top=CIDADES.slice().sort(function(a,b){return b.receita-a.receita;}).slice(0,10);
-  document.getElementById('top10').innerHTML=top.map(function(c,i){
-    var at=ativosSet.has(c.nome);
-    var cor=at?'#f97316':COR[c.farol];
+  var rows = TOP10_DATA.length > 0 ? TOP10_DATA : CIDADES.slice().sort(function(a,b){return b.receita-a.receita;}).slice(0,10).map(function(c){return {nome:c.nome,receita:c.receita,farol:c.farol};});
+  var maxRec = rows.reduce(function(m,r){return Math.max(m,r.receita);},1);
+  document.getElementById('top10').innerHTML=rows.slice(0,10).map(function(r,i){
+    var at=ativosSet.has(r.nome);
+    var cor=at?'#f97316':COR[r.farol]||'#64748b';
     return '<div style="display:flex;align-items:center;gap:12px;margin-bottom:8px">'
       +'<div style="width:20px;color:#334155;font-size:10px;font-family:monospace;text-align:right;flex-shrink:0">'+(i+1)+'</div>'
-      +'<div style="width:160px;color:'+(at?'#f97316':'#94a3b8')+';font-size:12px;font-family:\'Syne\',sans-serif;font-weight:'+(at?700:400)+';flex-shrink:0">'+c.nome+(at?' ●':'')+'</div>'
-      +'<div style="flex:1">'+bar(c.receita,MAX_REC,cor,6)+'</div>'
-      +'<div style="width:66px;color:#10b981;font-family:monospace;font-size:11px;text-align:right;flex-shrink:0">'+fmt(c.receita)+'</div>'
+      +'<div style="width:160px;color:'+(at?'#f97316':'#94a3b8')+';font-size:12px;font-weight:'+(at?700:400)+';flex-shrink:0">'+r.nome+(at?' ●':'')+'</div>'
+      +'<div style="flex:1">'+bar(r.receita,maxRec,cor,6)+'</div>'
+      +'<div style="width:66px;color:#10b981;font-family:monospace;font-size:11px;text-align:right;flex-shrink:0">'+fmt(r.receita)+'</div>'
       +'</div>';
   }).join('');
 }
+
 
 // ── MAPA ──────────────────────────────────────────────────
 function initMapa(){
@@ -551,6 +554,14 @@ async function init(){
 
     // Visitas SQL
     renderVisitas(healthMuns.filter(function(m){return m.status==='SQL';}));
+
+    // Top 10 da aba Dashboard — L43+ (idx 42 no array após slice(1))
+    // cols: [0]=Região [1]=Cidade [2]=Alunos [3]=Faturamento [4]=Farol
+    TOP10_DATA = DASH_ROWS.slice(42).filter(function(r){
+      return r[1]&&r[1].trim()&&r[3]&&num(r[3])>0;
+    }).map(function(r){
+      return {nome:r[1].trim(), receita:num(r[3]), farol:(r[4]||'F').trim()};
+    }).sort(function(a,b){return b.receita-a.receita;}).slice(0,10);
 
     // Cobertura
     var ativosSet = new Set(healthMuns.map(function(m){return m.nome;}));
