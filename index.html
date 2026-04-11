@@ -519,7 +519,10 @@ async function init(){
     // slice(1) removes header row, then rows 0=RGMSP...17=Itapeva, 19=TOTAL
     DASH_DATA = dash.slice(1);
     const totalRow = DASH_DATA.find(r=>(r[0]||'').toString().toUpperCase().includes('TOTAL'));
-    if(totalRow){
+    const totalRow = DASH_DATA.find(r=>(r[0]||'').toString().toUpperCase().includes('TOTAL'));
+    console.log('totalRow:', totalRow ? totalRow.slice(0,12) : 'NOT FOUND');
+    console.log('DASH_DATA length:', DASH_DATA.length);
+    console.log('DASH_DATA[0]:', DASH_DATA[0] ? DASH_DATA[0].slice(0,12) : 'empty');
       const somVal   = num(totalRow[10]);
       const alunosVal= num(totalRow[9]);
       const munVal   = parseInt(totalRow[7])||29;
