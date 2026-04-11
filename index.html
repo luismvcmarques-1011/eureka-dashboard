@@ -559,6 +559,11 @@ async function init(){
     // cols: [0]=Região [1]=Cidade [2]=Alunos [3]=Faturamento [4]=Farol
     // Dashboard L43+ cidades: filtrar apenas linhas onde col[1]=cidade (texto, não número/R$)
     // e col[3]=faturamento > 0
+    console.log('DASH_ROWS total:', DASH_ROWS.length);
+    console.log('DASH_ROWS[40]:', DASH_ROWS[40]);
+    console.log('DASH_ROWS[41]:', DASH_ROWS[41]);
+    console.log('DASH_ROWS[42]:', DASH_ROWS[42]);
+    console.log('DASH_ROWS[43]:', DASH_ROWS[43]);
     TOP10_DATA = DASH_ROWS.filter(function(r){
       var cidade = (r[1]||'').trim();
       var fat = (r[3]||'').toString().trim();
