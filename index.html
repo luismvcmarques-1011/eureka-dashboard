@@ -512,6 +512,8 @@ async function init(){
     // ── HEALTH: municípios ativos ──
     // L26 (idx 25) = header, L27+ = dados
     // cols: [0]=Região [1]=Município [2]=Farol [3]=Alunos [6]=Receita Pot [7]=Status [8]=Tempo [10]=Ajustada [13]=Ação
+    console.log('Health row 27:', health[26]);
+    console.log('Health row 28:', health[27]);
     const healthMuns=health.slice(26)
       .filter(r=>r[1]&&r[1].trim()&&r[1].trim()!=='Município')
       .map(r=>({
