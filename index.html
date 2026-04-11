@@ -445,7 +445,7 @@ function renderRegioes(ativosSet){
     const tot=r.row?parseInt(r.row[7])||0:r.muns.length;
     const maxAt=Math.max(tot,1);
     return '<div class="grow" style="border-bottom:1px solid #0f172a">'
-      +'<div style="font-family:'Syne',sans-serif;font-weight:600;font-size:12px">'+r.nome+'</div>'
+      +'<div style="font-weight:600;font-size:12px">'+r.nome+'</div>'
       +bar(at,maxAt,at>0?'#3b82f6':'#1e293b',6)
       +'<div style="color:#10b981;font-family:monospace;font-size:11px;text-align:right">'+fmt(rec)+'</div>'
       +'<div style="text-align:right">'+(at>0?'<span style="background:#3b82f618;color:#7dd3fc;padding:1px 6px;border-radius:4px;font-size:10px;font-family:monospace">'+at+'</span>':'<span style="color:#334155">—</span>')+'</div>'
