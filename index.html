@@ -61,11 +61,11 @@ footer{border-top:1px solid #0f172a;padding:11px 20px;display:flex;justify-conte
     <div class="logo-icon">E</div>
     <div>
       <div class="logo-title">Projeto Eureka</div>
-      <div class="logo-sub">PIPELINE · SÃO PAULO</div>
+      <div class="logo-sub">PIPELINE Â· SÃO PAULO</div>
     </div>
   </div>
   <div style="display:flex;align-items:center;gap:8px">
-    <span id="sync-badge" style="display:inline-flex;align-items:center;gap:4px;background:#10b98115;border:1px solid #10b98130;color:#10b981;font-size:9px;font-family:monospace;padding:2px 8px;border-radius:10px">⟳ carregando...</span>
+    <span id="sync-badge" style="display:inline-flex;align-items:center;gap:4px;background:#10b98115;border:1px solid #10b98130;color:#10b981;font-size:9px;font-family:monospace;padding:2px 8px;border-radius:10px">â³ carregando...</span>
     <span class="dot"></span>
     <span style="color:#64748b;font-size:10px;font-family:monospace" id="wk-label">Q2 2026</span>
   </div>
@@ -78,7 +78,7 @@ footer{border-top:1px solid #0f172a;padding:11px 20px;display:flex;justify-conte
 </nav>
 <main>
 
-<!-- ── PIPELINE ── -->
+<!-- ââ PIPELINE ââ -->
 <div id="tab-pipeline" class="tab on fade">
   <div class="g4">
     <div class="kpi" style="border:1px solid #3b82f628">
@@ -93,14 +93,14 @@ footer{border-top:1px solid #0f172a;padding:11px 20px;display:flex;justify-conte
       <div class="kpi-sub" id="k-fcp">17,4% da meta</div>
     </div>
     <div class="kpi" style="border:1px solid #8b5cf628">
-      <div class="kpi-label">Municípios</div>
+      <div class="kpi-label">MunicÃ­pios</div>
       <div class="kpi-value" style="color:#8b5cf6" id="k-mun">2</div>
       <div class="kpi-sub" id="k-sem">Semana 14</div>
     </div>
     <div class="kpi" style="border:1px solid #f59e0b28">
       <div class="kpi-label">Gap (B/W)</div>
       <div class="kpi-value" style="color:#f59e0b" id="k-bw">-R$881k</div>
-      <div class="kpi-sub">Falta fechar</div>
+      <div class="kpi-sub">${gap>=0 ? "✅ acima da meta" : "❌ falta fechar"}</div>
     </div>
   </div>
 
@@ -113,20 +113,20 @@ footer{border-top:1px solid #0f172a;padding:11px 20px;display:flex;justify-conte
     <div style="background:#1e293b;border-radius:99px;height:8px;overflow:hidden">
       <div id="pg-b" style="width:17.4%;height:100%;background:linear-gradient(90deg,#3b82f6,#10b981);border-radius:99px;transition:width 1s ease"></div>
     </div>
-    <div style="margin-top:7px;color:#475569;font-size:10px;font-family:monospace" id="pg-sub">Potencial total: R$579k · Meta: R$1,0M</div>
+    <div style="margin-top:7px;color:#475569;font-size:10px;font-family:monospace" id="pg-sub">Potencial total: R$579k Â· Meta: R$1,0M</div>
   </div>
 
   <div class="gpipe">
-    <!-- Cards municípios -->
+    <!-- Cards municÃ­pios -->
     <div>
-      <div style="color:#64748b;font-size:9px;letter-spacing:.12em;text-transform:uppercase;font-family:monospace;margin-bottom:10px">Municípios Ativos no Pipeline</div>
+      <div style="color:#64748b;font-size:9px;letter-spacing:.12em;text-transform:uppercase;font-family:monospace;margin-bottom:10px">MunicÃ­pios Ativos no Pipeline</div>
       <div class="pipe-card" style="border-left:3px solid #ef4444">
         <div style="display:flex;align-items:center;gap:7px;margin-bottom:5px;flex-wrap:wrap">
           <span style="font-size:15px;font-weight:700;font-family:'Syne',sans-serif">Pirassununga</span>
           <span class="badge" style="background:#ef444418;border:1px solid #ef444440;color:#ef4444"><span style="width:5px;height:5px;border-radius:50%;background:#ef4444;display:inline-block"></span>Quente</span>
           <span style="background:#1e293b;color:#7dd3fc;font-size:10px;padding:1px 6px;border-radius:4px;font-family:monospace">R1</span>
         </div>
-        <div style="color:#64748b;font-size:10px;font-family:monospace;margin-bottom:10px">CAMPINAS · 990 alunos · LCM</div>
+        <div style="color:#64748b;font-size:10px;font-family:monospace;margin-bottom:10px">CAMPINAS Â· 990 alunos Â· LCM</div>
         <div style="display:flex;gap:16px;flex-wrap:wrap;margin-bottom:10px">
           <div><div style="color:#475569;font-size:9px;text-transform:uppercase;margin-bottom:2px">Potencial</div><div style="font-size:13px;font-weight:600">R$ 396k</div></div>
           <div><div style="color:#475569;font-size:9px;text-transform:uppercase;margin-bottom:2px">Ajustado</div><div style="color:#10b981;font-size:13px;font-weight:600">R$ 119k</div></div>
@@ -134,16 +134,16 @@ footer{border-top:1px solid #0f172a;padding:11px 20px;display:flex;justify-conte
         </div>
         <div style="display:flex;align-items:center;justify-content:space-between">
           <div><div style="color:#475569;font-size:9px;text-transform:uppercase;margin-bottom:1px">Dias na etapa</div><div style="color:#10b981;font-size:22px;font-weight:700;font-family:'Syne',sans-serif">7</div></div>
-          <div style="background:#10b98120;border:1px solid #10b98140;color:#10b981;padding:4px 10px;border-radius:6px;font-size:11px;font-family:monospace">↗ Nutrir</div>
+          <div style="background:#10b98120;border:1px solid #10b98140;color:#10b981;padding:4px 10px;border-radius:6px;font-size:11px;font-family:monospace">â Nutrir</div>
         </div>
       </div>
       <div class="pipe-card" style="border-left:3px solid #f59e0b">
         <div style="display:flex;align-items:center;gap:7px;margin-bottom:5px;flex-wrap:wrap">
-          <span style="font-size:15px;font-weight:700;font-family:'Syne',sans-serif">Aguaí</span>
+          <span style="font-size:15px;font-weight:700;font-family:'Syne',sans-serif">AguaÃ­</span>
           <span class="badge" style="background:#f59e0b18;border:1px solid #f59e0b40;color:#f59e0b"><span style="width:5px;height:5px;border-radius:50%;background:#f59e0b;display:inline-block"></span>Morno</span>
           <span style="background:#1e293b;color:#7dd3fc;font-size:10px;padding:1px 6px;border-radius:4px;font-family:monospace">R1</span>
         </div>
-        <div style="color:#64748b;font-size:10px;font-family:monospace;margin-bottom:10px">CAMPINAS · 450 alunos · LCM</div>
+        <div style="color:#64748b;font-size:10px;font-family:monospace;margin-bottom:10px">CAMPINAS Â· 450 alunos Â· LCM</div>
         <div style="display:flex;gap:16px;flex-wrap:wrap;margin-bottom:10px">
           <div><div style="color:#475569;font-size:9px;text-transform:uppercase;margin-bottom:2px">Potencial</div><div style="font-size:13px;font-weight:600">R$ 183k</div></div>
           <div><div style="color:#475569;font-size:9px;text-transform:uppercase;margin-bottom:2px">Ajustado</div><div style="color:#10b981;font-size:13px;font-weight:600">R$ 55k</div></div>
@@ -151,7 +151,7 @@ footer{border-top:1px solid #0f172a;padding:11px 20px;display:flex;justify-conte
         </div>
         <div style="display:flex;align-items:center;justify-content:space-between">
           <div><div style="color:#475569;font-size:9px;text-transform:uppercase;margin-bottom:1px">Dias na etapa</div><div style="color:#10b981;font-size:22px;font-weight:700;font-family:'Syne',sans-serif">3</div></div>
-          <div style="background:#10b98120;border:1px solid #10b98140;color:#10b981;padding:4px 10px;border-radius:6px;font-size:11px;font-family:monospace">↗ Nutrir</div>
+          <div style="background:#10b98120;border:1px solid #10b98140;color:#10b981;padding:4px 10px;border-radius:6px;font-size:11px;font-family:monospace">â Nutrir</div>
         </div>
       </div>
     </div>
@@ -170,7 +170,7 @@ footer{border-top:1px solid #0f172a;padding:11px 20px;display:flex;justify-conte
           <div style="background:#1e293b;border-radius:99px;height:4px;overflow:hidden;margin-bottom:6px">
             <div style="width:74%;height:100%;background:#8b5cf6;border-radius:99px"></div>
           </div>
-          <div style="color:#475569;font-size:10px;font-family:monospace">Gargalo: <span style="color:#f59e0b">R1 → R2</span></div>
+          <div style="color:#475569;font-size:10px;font-family:monospace">Gargalo: <span style="color:#f59e0b">R1 â R2</span></div>
         </div>
         <div style="border-top:1px solid #1e293b;margin-top:12px;padding-top:12px">
           <div style="color:#64748b;font-size:9px;font-family:monospace;margin-bottom:7px;letter-spacing:.1em;text-transform:uppercase">Ticket / Aluno</div>
@@ -183,54 +183,54 @@ footer{border-top:1px solid #0f172a;padding:11px 20px;display:flex;justify-conte
     </div>
   </div>
 
-  <!-- Próximas Visitas via Google Sheets -->
+  <!-- PrÃ³ximas Visitas via Google Sheets -->
   <div class="card">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;flex-wrap:wrap;gap:6px">
-      <div class="card-title" style="margin-bottom:0">Próximas Visitas Agendadas</div>
-      <span id="visitas-badge" style="background:#f97316;color:#fff;font-size:9px;font-family:monospace;padding:2px 10px;border-radius:10px;font-weight:600">● carregando...</span>
+      <div class="card-title" style="margin-bottom:0">PrÃ³ximas Visitas Agendadas</div>
+      <span id="visitas-badge" style="background:#f97316;color:#fff;font-size:9px;font-family:monospace;padding:2px 10px;border-radius:10px;font-weight:600">â carregando...</span>
     </div>
     <div id="visitas-container" style="color:#475569;font-size:11px;font-family:monospace;text-align:center;padding:12px">carregando do Google Sheets...</div>
   </div>
 </div>
 
-<!-- ── MERCADO ── -->
+<!-- ââ MERCADO ââ -->
 <div id="tab-mercado" class="tab fade">
   <div class="g3">
-    <div class="kpi" style="border:1px solid #3b82f628"><div class="kpi-label">Municípios SP</div><div class="kpi-value" style="color:#3b82f6">645</div><div class="kpi-sub">14 regiões administrativas</div></div>
+    <div class="kpi" style="border:1px solid #3b82f628"><div class="kpi-label">MunicÃ­pios SP</div><div class="kpi-value" style="color:#3b82f6">645</div><div class="kpi-sub">14 regiÃµes administrativas</div></div>
     <div class="kpi" style="border:1px solid #8b5cf628"><div class="kpi-label">Alunos EF (TAM)</div><div class="kpi-value" style="color:#8b5cf6">5,46M</div><div class="kpi-sub">EF1 + EF2</div></div>
-    <div class="kpi" style="border:1px solid #10b98128"><div class="kpi-label">TAM Anual</div><div class="kpi-value" style="color:#10b981">R$2,6B</div><div class="kpi-sub">R$400–500/aluno</div></div>
+    <div class="kpi" style="border:1px solid #10b98128"><div class="kpi-label">TAM Anual</div><div class="kpi-value" style="color:#10b981">R$2,6B</div><div class="kpi-sub">R$400â500/aluno</div></div>
   </div>
   <div class="g3">
-    <div class="kpi" style="border:1px solid #f59e0b28"><div class="kpi-label">SOM Mapeado</div><div class="kpi-value" style="color:#f59e0b">R$26,2M</div><div class="kpi-sub">27 municípios</div></div>
+    <div class="kpi" style="border:1px solid #f59e0b28"><div class="kpi-label">SOM Mapeado</div><div class="kpi-value" style="color:#f59e0b">R$26,2M</div><div class="kpi-sub">27 municÃ­pios</div></div>
     <div class="kpi" style="border:1px solid #f59e0b28"><div class="kpi-label">Alunos SOM</div><div class="kpi-value" style="color:#f59e0b">59.569</div><div class="kpi-sub">1,1% do TAM</div></div>
-    <div class="kpi" style="border:1px solid #ef444428"><div class="kpi-label">Penetração</div><div class="kpi-value" style="color:#ef4444">4,2%</div><div class="kpi-sub">ativos / SOM</div></div>
+    <div class="kpi" style="border:1px solid #ef444428"><div class="kpi-label">PenetraÃ§Ã£o</div><div class="kpi-value" style="color:#ef4444">4,2%</div><div class="kpi-sub">ativos / SOM</div></div>
   </div>
   <div class="card" style="margin-bottom:14px">
-    <div class="card-title">Cobertura por Região</div>
+    <div class="card-title">Cobertura por RegiÃ£o</div>
     <div id="regioes-container"></div>
   </div>
   <div style="background:rgba(239,68,68,.05);border:1px solid rgba(239,68,68,.18);border-radius:14px;padding:14px 16px">
-    <div style="color:#ef4444;font-size:9px;letter-spacing:.1em;text-transform:uppercase;font-family:monospace;margin-bottom:7px">⚡ Oportunidade</div>
-    <div style="color:#94a3b8;font-size:13px;line-height:1.7"><strong style="color:#f1f5f9">Sorocaba, Ribeirão Preto, Barretos e Franca</strong> têm zero municípios no pipeline — mas já existem indicações mapeadas. Juntas representam <strong style="color:#10b981">R$ 1,5M+</strong> em potencial imediato.</div>
+    <div style="color:#ef4444;font-size:9px;letter-spacing:.1em;text-transform:uppercase;font-family:monospace;margin-bottom:7px">â¡ Oportunidade</div>
+    <div style="color:#94a3b8;font-size:13px;line-height:1.7"><strong style="color:#f1f5f9">Sorocaba, RibeirÃ£o Preto, Barretos e Franca</strong> tÃªm zero municÃ­pios no pipeline â mas jÃ¡ existem indicaÃ§Ãµes mapeadas. Juntas representam <strong style="color:#10b981">R$ 1,5M+</strong> em potencial imediato.</div>
   </div>
 </div>
 
-<!-- ── COBERTURA ── -->
+<!-- ââ COBERTURA ââ -->
 <div id="tab-cobertura" class="tab fade">
   <div class="g3" style="margin-bottom:18px">
-    <div class="kpi" style="border:1px solid #f9731628"><div class="kpi-label">Cidades Mapeadas</div><div class="kpi-value" style="color:#f97316">27</div><div class="kpi-sub">Estado de São Paulo</div></div>
+    <div class="kpi" style="border:1px solid #f9731628"><div class="kpi-label">Cidades Mapeadas</div><div class="kpi-value" style="color:#f97316">27</div><div class="kpi-sub">Estado de SÃ£o Paulo</div></div>
     <div class="kpi" style="border:1px solid #f9731628;position:relative;overflow:hidden">
       <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#f97316,transparent);animation:shimmer 2.5s infinite"></div>
       <div class="kpi-label">Ativas no Pipeline</div>
       <div class="kpi-value" style="color:#f97316">2</div>
-      <div class="kpi-sub">Pirassununga · Aguaí</div>
+      <div class="kpi-sub">Pirassununga Â· AguaÃ­</div>
     </div>
     <div class="kpi" style="border:1px solid #3b82f628"><div class="kpi-label">Receita Total SOM</div><div class="kpi-value" style="color:#3b82f6">R$26,2M</div><div class="kpi-sub">Potencial das 27 cidades</div></div>
   </div>
   <div class="card" style="padding:14px;margin-bottom:14px">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;flex-wrap:wrap;gap:6px">
-      <div class="card-title" style="margin-bottom:0">Estado de São Paulo — 27 cidades selecionadas</div>
-      <span style="color:#f97316;font-size:10px;font-family:monospace">● tamanho proporcional à receita</span>
+      <div class="card-title" style="margin-bottom:0">Estado de SÃ£o Paulo â 27 cidades selecionadas</div>
+      <span style="color:#f97316;font-size:10px;font-family:monospace">â tamanho proporcional Ã  receita</span>
     </div>
     <div id="mapa"></div>
     <div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:12px">
@@ -245,79 +245,79 @@ footer{border-top:1px solid #0f172a;padding:11px 20px;display:flex;justify-conte
     </div>
   </div>
   <div class="card">
-    <div class="card-title">Top 10 — Maior Receita Potencial</div>
+    <div class="card-title">Top 10 â Maior Receita Potencial</div>
     <div id="top10-container"></div>
   </div>
 </div>
 
-<!-- ── FINANCEIRO ── -->
+<!-- ââ FINANCEIRO ââ -->
 <div id="tab-financeiro" class="tab fade">
   <div class="g2">
-    <div class="kpi" style="border:1px solid #3b82f628"><div class="kpi-label">FUNDEB SP</div><div class="kpi-value" style="color:#3b82f6">R$53,6B</div><div class="kpi-sub">2024 distribuído</div></div>
-    <div class="kpi" style="border:1px solid #f59e0b28"><div class="kpi-label">% FUNDEB Médio (pond.)</div><div class="kpi-value" style="color:#f59e0b">20,5%</div><div class="kpi-sub">Receita / FUNDEB disp.(40%) · pond. por alunos</div></div>
+    <div class="kpi" style="border:1px solid #3b82f628"><div class="kpi-label">FUNDEB SP</div><div class="kpi-value" style="color:#3b82f6">R$53,6B</div><div class="kpi-sub">2024 distribuÃ­do</div></div>
+    <div class="kpi" style="border:1px solid #f59e0b28"><div class="kpi-label">% FUNDEB MÃ©dio (pond.)</div><div class="kpi-value" style="color:#f59e0b">20,5%</div><div class="kpi-sub">Receita / FUNDEB disp.(40%) Â· pond. por alunos</div></div>
   </div>
   <div class="card">
-    <div class="card-title">Cenários — 27 Municípios SOM</div>
+    <div class="card-title">CenÃ¡rios â 27 MunicÃ­pios SOM</div>
     <div class="g3s">
       <div style="background:#64748b08;border:1px solid #64748b28;border-radius:12px;padding:14px 16px">
         <div style="color:#64748b;font-size:9px;font-family:monospace;letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px">Conservador</div>
         <div style="color:#f1f5f9;font-size:clamp(16px,4.5vw,22px);font-weight:700;font-family:'Syne',sans-serif;margin-bottom:4px">R$6,6M</div>
-        <div style="color:#475569;font-size:10px;font-family:monospace">Conversão: 25%</div>
+        <div style="color:#475569;font-size:10px;font-family:monospace">ConversÃ£o: 25%</div>
       </div>
       <div style="background:#3b82f608;border:1px solid #3b82f628;border-radius:12px;padding:14px 16px">
         <div style="color:#3b82f6;font-size:9px;font-family:monospace;letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px">Realista</div>
         <div style="color:#f1f5f9;font-size:clamp(16px,4.5vw,22px);font-weight:700;font-family:'Syne',sans-serif;margin-bottom:4px">R$13,1M</div>
-        <div style="color:#475569;font-size:10px;font-family:monospace">Conversão: 50%</div>
+        <div style="color:#475569;font-size:10px;font-family:monospace">ConversÃ£o: 50%</div>
       </div>
       <div style="background:#10b98108;border:1px solid #10b98128;border-radius:12px;padding:14px 16px">
         <div style="color:#10b981;font-size:9px;font-family:monospace;letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px">Agressivo</div>
         <div style="color:#f1f5f9;font-size:clamp(16px,4.5vw,22px);font-weight:700;font-family:'Syne',sans-serif;margin-bottom:4px">R$26,2M</div>
-        <div style="color:#475569;font-size:10px;font-family:monospace">Conversão: 100%</div>
+        <div style="color:#475569;font-size:10px;font-family:monospace">ConversÃ£o: 100%</div>
       </div>
     </div>
     <div style="margin-top:14px;padding:11px 13px;background:#0f172a;border-radius:8px;color:#475569;font-size:11px;font-family:monospace;line-height:1.6">
-      📌 Em média, o investimento representa <strong style="color:#f59e0b">20,5%</strong> do FUNDEB disponível (40% livre), média ponderada por alunos das 27 cidades. Varia de <strong style="color:#94a3b8">8,9%</strong> (Pirassununga) a <strong style="color:#94a3b8">29,5%</strong> (Campinas).
+      ð Em mÃ©dia, o investimento representa <strong style="color:#f59e0b">20,5%</strong> do FUNDEB disponÃ­vel (40% livre), mÃ©dia ponderada por alunos das 27 cidades. Varia de <strong style="color:#94a3b8">8,9%</strong> (Pirassununga) a <strong style="color:#94a3b8">29,5%</strong> (Campinas).
     </div>
   </div>
 </div>
 
 </main>
 <footer>
-  <span>PROJETO EUREKA · CONFIDENCIAL</span>
-  <span id="footer-wk">Semana 14 · Q2 2026</span>
+  <span>PROJETO EUREKA Â· CONFIDENCIAL</span>
+  <span id="footer-wk">Semana 14 Â· Q2 2026</span>
 </footer>
 
 <script>
-// ── URLs GOOGLE SHEETS ────────────────────────────────────
+// ââ URLs GOOGLE SHEETS ââââââââââââââââââââââââââââââââââââ
 const SHEETS = {
   pipeline:    'https://docs.google.com/spreadsheets/d/e/2PACX-1vTsXRbetOCpr1JHBSsuS-YEjQjLBc5Yq4SfNVvl-4QNlgZ2M1iNrVpt2zey3IvLdz7L_uGM7jnR_DRT/pub?gid=1021192406&single=true&output=csv',
   health:      'https://docs.google.com/spreadsheets/d/e/2PACX-1vTsXRbetOCpr1JHBSsuS-YEjQjLBc5Yq4SfNVvl-4QNlgZ2M1iNrVpt2zey3IvLdz7L_uGM7jnR_DRT/pub?gid=1516720884&single=true&output=csv',
   prefeituras: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTsXRbetOCpr1JHBSsuS-YEjQjLBc5Yq4SfNVvl-4QNlgZ2M1iNrVpt2zey3IvLdz7L_uGM7jnR_DRT/pub?gid=418220658&single=true&output=csv',
 };
 
-// ── DADOS FIXOS ───────────────────────────────────────────
-// cols Prefeituras: [0]=idx [1]=nome [2]=prefeito [3]=secretária [4]=indicação [5]=farol [6]=alunos [7]=fundeb [8]=status [9]=receita [10]=%fundeb
+// ââ DADOS FIXOS âââââââââââââââââââââââââââââââââââââââââââ
+// cols Prefeituras: [0]=idx [1]=nome [2]=prefeito [3]=secretÃ¡ria [4]=indicaÃ§Ã£o [5]=farol [6]=alunos [7]=fundeb [8]=status [9]=receita [10]=%fundeb
 const FUNIL = [
-  {etapa:'SQL',      count:0, peso:'25%', cor:'#64748b'},
-  {etapa:'R1',       count:5, peso:'30%', cor:'#3b82f6'},
-  {etapa:'R2',       count:0, peso:'40%', cor:'#8b5cf6'},
-  {etapa:'R3',       count:0, peso:'50%', cor:'#f59e0b'},
-  {etapa:'Licitação',count:0, peso:'85%', cor:'#10b981'},
-];
+  {etapa:'SQL',      count:(window.__hS&&window.__hS.SQL)||0, peso:'25%', cor:'#64748b'},
+  {etapa:'R1',       count:(window.__hS&&window.__hS.R1) ||0, peso:'30%', cor:'#3b82f6'},
+  {etapa:'R2',       count:(window.__hS&&window.__hS.R2) ||0, peso:'40%', cor:'#8b5cf6'},
+  {etapa:'R3',       count:(window.__hS&&window.__hS.R3) ||0, peso:'50%', cor:'#f59e0b'},
+  {etapa:'Licitação',count:(window.__hS&&window.__hS.Licitacao)||0, peso:'85%', cor:'#10b981'},
+]
 const REGIOES = [
   {nome:'RMGSP',      receita:9829500,  municipios:['Osasco','Diadema','S.Caetano Sul','Franco da Rocha','Caieiras','Fco.Morato','Cajamar']},
-  {nome:'SJCampos',   receita:7383500,  municipios:['SJ dos Campos','Jacareí','São Sebastião','Caraguatatuba','Mogi das Cruzes','Santos']},
-  {nome:'Campinas',   receita:4426500,  municipios:['Campinas','Paulínia','Pirassununga','Aguaí','São Carlos','Promissão','Novo Horizonte','Lins','Penápolis','Catanduva']},
-  {nome:'Bauru',      receita:798700,   municipios:['Itaí']},
-  {nome:'SJRPreto',   receita:854150,   municipios:['Votuporanga','Fernandópolis']},
+  {nome:'SJCampos',   receita:7383500,  municipios:['SJ dos Campos','JacareÃ­','SÃ£o SebastiÃ£o','Caraguatatuba','Mogi das Cruzes','Santos']},
+  {nome:'Campinas',   receita:4426500,  municipios:['Campinas','PaulÃ­nia','Pirassununga','AguaÃ­','SÃ£o Carlos','PromissÃ£o','Novo Horizonte','Lins','PenÃ¡polis','Catanduva']},
+  {nome:'Bauru',      receita:798700,   municipios:['ItaÃ­']},
+  {nome:'SJRPreto',   receita:854150,   municipios:['Votuporanga','FernandÃ³polis']},
   {nome:'Araraquara', receita:660000,   municipios:['Pres.Prudente']},
 ];
 const CIDADES = [
   {nome:'Pirassununga',   lat:-21.9959,lng:-47.4258,receita:1485000, farol:'Q',ativa:true},
-  {nome:'Aguaí',          lat:-22.0621,lng:-46.9773,receita:1350000, farol:'M',ativa:true},
-  {nome:'São Carlos',     lat:-22.0174,lng:-47.8908,receita:13464000,farol:'F',ativa:false},
-  {nome:'Promissão',      lat:-21.5369,lng:-49.8603,receita:2056500, farol:'Q',ativa:false},
-  {nome:'Itaí',           lat:-23.4167,lng:-48.9333,receita:1368000, farol:'Q',ativa:false},
+  {nome:'AguaÃ­',          lat:-22.0621,lng:-46.9773,receita:1350000, farol:'M',ativa:true},
+  {nome:'SÃ£o Carlos',     lat:-22.0174,lng:-47.8908,receita:13464000,farol:'F',ativa:false},
+  {nome:'PromissÃ£o',      lat:-21.5369,lng:-49.8603,receita:2056500, farol:'Q',ativa:false},
+  {nome:'ItaÃ­',           lat:-23.4167,lng:-48.9333,receita:1368000, farol:'Q',ativa:false},
   {nome:'S.Caetano Sul',  lat:-23.6229,lng:-46.5525,receita:9135000, farol:'M',ativa:false},
   {nome:'Franco da Rocha',lat:-23.3219,lng:-46.7233,receita:8415000, farol:'M',ativa:false},
   {nome:'Caieiras',       lat:-23.3653,lng:-46.7417,receita:4635000, farol:'F',ativa:false},
@@ -325,28 +325,28 @@ const CIDADES = [
   {nome:'Cajamar',        lat:-23.3575,lng:-46.8767,receita:5625000, farol:'F',ativa:false},
   {nome:'Osasco',         lat:-23.5325,lng:-46.7917,receita:41805000,farol:'F',ativa:false},
   {nome:'Diadema',        lat:-23.6861,lng:-46.6228,receita:19845000,farol:'M',ativa:false},
-  {nome:'São Sebastião',  lat:-23.8122,lng:-45.4022,receita:4815000, farol:'M',ativa:false},
+  {nome:'SÃ£o SebastiÃ£o',  lat:-23.8122,lng:-45.4022,receita:4815000, farol:'M',ativa:false},
   {nome:'Caraguatatuba',  lat:-23.6194,lng:-45.4128,receita:7110000, farol:'F',ativa:false},
   {nome:'Mogi das Cruzes',lat:-23.5229,lng:-46.1875,receita:25965000,farol:'F',ativa:false},
   {nome:'Santos',         lat:-23.9608,lng:-46.3336,receita:22860000,farol:'F',ativa:false},
   {nome:'Campinas',       lat:-22.9056,lng:-47.0608,receita:60129000,farol:'F',ativa:false},
-  {nome:'Paulínia',       lat:-22.7619,lng:-47.1533,receita:6120000, farol:'M',ativa:false},
-  {nome:'Fernandópolis',  lat:-20.2831,lng:-50.2461,receita:3748500, farol:'F',ativa:false},
+  {nome:'PaulÃ­nia',       lat:-22.7619,lng:-47.1533,receita:6120000, farol:'M',ativa:false},
+  {nome:'FernandÃ³polis',  lat:-20.2831,lng:-50.2461,receita:3748500, farol:'F',ativa:false},
   {nome:'Votuporanga',    lat:-20.4231,lng:-49.9711,receita:5067000, farol:'F',ativa:false},
-  {nome:'Penápolis',      lat:-21.4194,lng:-50.0778,receita:3325500, farol:'F',ativa:false},
+  {nome:'PenÃ¡polis',      lat:-21.4194,lng:-50.0778,receita:3325500, farol:'F',ativa:false},
   {nome:'Catanduva',      lat:-21.1378,lng:-48.9728,receita:6390000, farol:'F',ativa:false},
   {nome:'Pres.Prudente',  lat:-22.1256,lng:-51.3889,receita:12141000,farol:'F',ativa:false},
   {nome:'Novo Horizonte', lat:-21.4669,lng:-49.2194,receita:2218500, farol:'F',ativa:false},
   {nome:'SJ dos Campos',  lat:-23.1794,lng:-45.8869,receita:38880000,farol:'M',ativa:false},
-  {nome:'Jacareí',        lat:-23.2997,lng:-45.9658,receita:12420000,farol:'F',ativa:false},
+  {nome:'JacareÃ­',        lat:-23.2997,lng:-45.9658,receita:12420000,farol:'F',ativa:false},
   {nome:'Lins',           lat:-21.6797,lng:-49.7483,receita:3955500, farol:'F',ativa:false},
 ];
 const MAX_REC = Math.max(...CIDADES.map(c=>c.receita));
 const COR = {Q:'#ef4444',M:'#f59e0b',F:'#64748b'};
 const FL  = {Q:'Quente', M:'Morno',  F:'Frio'};
-const fmt = n=>n>=1e6?`R$${(n/1e6).toFixed(1)}M`:n>=1e3?`R$${(n/1e3).toFixed(0)}k`:`R$${Math.round(n)}`;
+const fmt = n=>n>=1e6?`R$${(n/1e6).toFixed(1).replace('.',',')}M`:n>=1e3?`R$${(n/1e3).toFixed(0)}k`:`R$${Math.round(n)}`;
 
-// ── HELPERS ───────────────────────────────────────────────
+// ââ HELPERS âââââââââââââââââââââââââââââââââââââââââââââââ
 function csv(txt){
   return txt.trim().split('\n').map(l=>{
     const c=[];let s='',q=false;
@@ -358,7 +358,7 @@ function bar(v,max,cor,h=6){
   return `<div style="background:#1e293b;border-radius:99px;height:${h}px;overflow:hidden;width:100%"><div style="width:${Math.min(100,(v/max)*100).toFixed(1)}%;height:100%;background:${cor};border-radius:99px;transition:width .8s ease"></div></div>`;
 }
 
-// ── NAVEGAÇÃO ─────────────────────────────────────────────
+// ââ NAVEGAÃÃO âââââââââââââââââââââââââââââââââââââââââââââ
 let mapaInit = false;
 function ST(id, btn){
   document.querySelectorAll('.tab').forEach(t=>t.classList.remove('on'));
@@ -368,7 +368,7 @@ function ST(id, btn){
   if(id==='cobertura'&&!mapaInit){initMapa();mapaInit=true;}
 }
 
-// ── FUNIL ─────────────────────────────────────────────────
+// ââ FUNIL âââââââââââââââââââââââââââââââââââââââââââââââââ
 function renderFunil(){
   const mx = Math.max(...FUNIL.map(e=>e.count),1);
   document.getElementById('funil-container').innerHTML = FUNIL.map(e=>`
@@ -383,7 +383,7 @@ function renderFunil(){
     </div>`).join('');
 }
 
-// ── REGIÕES (popula com ativas do Health) ─────────────────
+// ââ REGIÃES (popula com ativas do Health) âââââââââââââââââ
 function renderRegioes(ativosNomes){
   document.getElementById('regioes-container').innerHTML = REGIOES.map(r=>{
     const at = r.municipios.filter(m=>ativosNomes.has(m)).length;
@@ -392,12 +392,12 @@ function renderRegioes(ativosNomes){
       ${bar(at,6,at>0?'#3b82f6':'#1e293b',6)}
       <div class="gcol-hide" style="color:#64748b;font-size:10px;font-family:monospace;text-align:right"></div>
       <div style="color:#10b981;font-family:monospace;font-size:11px;text-align:right">${fmt(r.receita)}</div>
-      <div style="text-align:right">${at>0?`<span style="background:#3b82f618;color:#7dd3fc;padding:1px 6px;border-radius:4px;font-size:10px;font-family:monospace">${at}</span>`:'<span style="color:#334155">—</span>'}</div>
+      <div style="text-align:right">${at>0?`<span style="background:#3b82f618;color:#7dd3fc;padding:1px 6px;border-radius:4px;font-size:10px;font-family:monospace">${at}</span>`:'<span style="color:#334155">â</span>'}</div>
     </div>`;
   }).join('');
 }
 
-// ── TOP 10 ────────────────────────────────────────────────
+// ââ TOP 10 ââââââââââââââââââââââââââââââââââââââââââââââââ
 function renderTop10(ativosNomes){
   const top = [...CIDADES].sort((a,b)=>b.receita-a.receita).slice(0,10);
   document.getElementById('top10-container').innerHTML = top.map((c,i)=>{
@@ -405,17 +405,17 @@ function renderTop10(ativosNomes){
     const cor = at?'#f97316':COR[c.farol];
     return `<div style="display:flex;align-items:center;gap:12px;margin-bottom:8px">
       <div style="width:20px;color:#334155;font-size:10px;font-family:monospace;text-align:right;flex-shrink:0">${i+1}</div>
-      <div style="width:160px;color:${at?'#f97316':'#94a3b8'};font-size:12px;font-family:'Syne',sans-serif;font-weight:${at?700:400};flex-shrink:0">${c.nome}${at?' ●':''}</div>
+      <div style="width:160px;color:${at?'#f97316':'#94a3b8'};font-size:12px;font-family:'Syne',sans-serif;font-weight:${at?700:400};flex-shrink:0">${c.nome}${at?' â':''}</div>
       <div style="flex:1">${bar(c.receita,MAX_REC,cor,6)}</div>
       <div style="width:66px;color:#10b981;font-family:monospace;font-size:11px;text-align:right;flex-shrink:0">${fmt(c.receita)}</div>
     </div>`;
   }).join('');
 }
 
-// ── MAPA LEAFLET ──────────────────────────────────────────
+// ââ MAPA LEAFLET ââââââââââââââââââââââââââââââââââââââââââ
 function initMapa(){
   const map = L.map('mapa',{center:[-22.5,-48.5],zoom:7,zoomControl:true,scrollWheelZoom:false});
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',{attribution:'© CARTO',subdomains:'abcd',maxZoom:19}).addTo(map);
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',{attribution:'Â© CARTO',subdomains:'abcd',maxZoom:19}).addTo(map);
 
   // Contorno real SP
   fetch('https://raw.githubusercontent.com/codeforgermany/click_that_hood/main/public/data/brazil-states.geojson')
@@ -433,20 +433,20 @@ function initMapa(){
       .addTo(map).bindPopup(`<div style="background:#0f172a;border:1px solid #3b82f660;border-radius:8px;padding:10px 14px;color:#f1f5f9;font-family:system-ui;min-width:130px">
         <div style="font-weight:700;font-size:13px;margin-bottom:3px">${c.nome}</div>
         <div style="color:#10b981;font-size:11px;margin-bottom:2px">${fmt(c.receita)}</div>
-        <div style="color:${cor};font-size:11px">${c.ativa?'● Pipeline ativo':'● '+FL[c.farol]}</div>
+        <div style="color:${cor};font-size:11px">${c.ativa?'â Pipeline ativo':'â '+FL[c.farol]}</div>
       </div>`);
   });
 }
 
-// ── PRÓXIMAS VISITAS (SQL) ────────────────────────────────
+// ââ PRÃXIMAS VISITAS (SQL) ââââââââââââââââââââââââââââââââ
 function renderVisitas(pref){
-  // cols: [0]=idx [1]=nome [4]=indicação [5]=farol [6]=alunos [8]=status [9]=receita [10]=%fundeb
+  // cols: [0]=idx [1]=nome [4]=indicaÃ§Ã£o [5]=farol [6]=alunos [8]=status [9]=receita [10]=%fundeb
   const visitas = pref.filter(r=>(r[8]||'').toUpperCase().trim()==='SQL');
   const badge = document.getElementById('visitas-badge');
-  badge.textContent = `● ${visitas.length} agendada${visitas.length!==1?'s':''}`;
+  badge.textContent = `â ${visitas.length} agendada${visitas.length!==1?'s':''}`;
 
   if(visitas.length===0){
-    document.getElementById('visitas-container').innerHTML=`<div style="color:#475569;font-size:11px;font-family:monospace;text-align:center;padding:16px">Nenhuma visita agendada.<br>Adicione <strong style="color:#3b82f6">SQL</strong> na coluna Status da aba Prefeituras Prioritárias.</div>`;
+    document.getElementById('visitas-container').innerHTML=`<div style="color:#475569;font-size:11px;font-family:monospace;text-align:center;padding:16px">Nenhuma visita agendada.<br>Adicione <strong style="color:#3b82f6">SQL</strong> na coluna Status da aba Prefeituras PrioritÃ¡rias.</div>`;
     return;
   }
   document.getElementById('visitas-container').innerHTML=`
@@ -455,7 +455,7 @@ function renderVisitas(pref){
         const cor=COR[r[5]]||'#64748b';
         return `<div style="background:#0f172a;border-top:2px solid ${cor};border:1px solid ${cor}20;border-radius:10px;padding:11px 12px">
           <div style="font-family:'Syne',sans-serif;font-size:11px;font-weight:700;margin-bottom:5px;color:#f1f5f9">${r[1]}</div>
-          <span class="badge" style="background:${cor}18;border:1px solid ${cor}40;color:${cor};margin-bottom:7px;display:inline-flex"><span style="width:5px;height:5px;border-radius:50%;background:${cor};display:inline-block"></span>${FL[r[5]]||'—'}</span>
+          <span class="badge" style="background:${cor}18;border:1px solid ${cor}40;color:${cor};margin-bottom:7px;display:inline-flex"><span style="width:5px;height:5px;border-radius:50%;background:${cor};display:inline-block"></span>${FL[r[5]]||'â'}</span>
           <div style="color:#10b981;font-family:monospace;font-size:12px;font-weight:600;margin-bottom:2px">${fmt(parseFloat(r[9]))}</div>
           <div style="color:#475569;font-size:9px;font-family:monospace">${parseInt(r[6]).toLocaleString()} alunos</div>
           <div style="color:#334155;font-size:9px;font-family:monospace;margin-top:2px">${(parseFloat(r[10])*100).toFixed(1)}% FUNDEB</div>
@@ -465,11 +465,11 @@ function renderVisitas(pref){
     </div>`;
 }
 
-// ── INIT: FETCH SHEETS ────────────────────────────────────
+// ââ INIT: FETCH SHEETS ââââââââââââââââââââââââââââââââââââ
 async function init(){
   renderFunil();
-  renderTop10(new Set(['Pirassununga','Aguaí']));
-  renderRegioes(new Set(['Pirassununga','Aguaí']));
+  renderTop10(new Set(['Pirassununga','AguaÃ­']));
+  renderRegioes(new Set(['Pirassununga','AguaÃ­']));
 
   try{
     // Buscar as 3 abas em paralelo
@@ -482,14 +482,14 @@ async function init(){
     const pref   = csv(await rPref.text()).slice(1).filter(r=>r[1]&&r[1].trim());
     const health = csv(await rHealth.text());
 
-    // ── PIPELINE TRACKING: pegar última linha com semana (Wxx) ──
+    // ââ PIPELINE TRACKING: pegar Ãºltima linha com semana (Wxx) ââ
     // L1: Meta Q2[1], B/W[3], %FST[5], SQL[7], R1[9]...
-    // L4+: Semana[0], Receita Potencial[1], Municípios[3]...
+    // L4+: Semana[0], Receita Potencial[1], MunicÃ­pios[3]...
     const l1 = pipe[0] || [];
     const meta = parseFloat((l1[1]||'').replace(/[^0-9.-]/g,'')) || 1000000;
     const bw   = parseFloat((l1[3]||'').replace(/[^0-9.-]/g,'')) || 0;
 
-    // Última semana com dados
+    // Ãltima semana com dados
     let lastRow = null;
     for(let i=pipe.length-1;i>=3;i--){
       if(pipe[i][0]&&pipe[i][0].startsWith('W')&&pipe[i][1]){lastRow=pipe[i];break;}
@@ -506,20 +506,20 @@ async function init(){
       document.getElementById('k-mun').textContent   = mun;
       document.getElementById('k-sem').textContent   = semana;
       document.getElementById('k-bw').textContent    = fmt(bw);
-      document.getElementById('wk-label').textContent= `${semana} · Q2 2026`;
-      document.getElementById('footer-wk').textContent=`${semana} · Q2 2026`;
+      document.getElementById('wk-label').textContent= `${semana} Â· Q2 2026`;
+      document.getElementById('footer-wk').textContent=`${semana} Â· Q2 2026`;
       document.getElementById('pg-v').innerHTML      = `${fmt(receita)} <span style="color:#475569;font-size:12px;font-weight:400">/ ${fmt(meta)}</span>`;
       document.getElementById('pg-p').textContent    = `${metaPct.toFixed(1)}%`;
       document.getElementById('pg-b').style.width    = `${Math.min(100,metaPct)}%`;
-      document.getElementById('pg-sub').textContent  = `Potencial total: ${fmt(receita)} · Meta: ${fmt(meta)}`;
+      document.getElementById('pg-sub').textContent  = `Potencial total: ${fmt(receita)} Â· Meta: ${fmt(meta)}`;
     }
 
-    // ── PRÓXIMAS VISITAS (SQL) ──
+    // ââ PRÃXIMAS VISITAS (SQL) ââ
     renderVisitas(pref);
 
-    // ── HEALTH: municípios ativos (linhas a partir de L26) ──
+    // ââ HEALTH: municÃ­pios ativos (linhas a partir de L26) ââ
     const ativosNomes = new Set(
-      health.slice(25).filter(r=>r[1]&&r[1].trim()&&r[1]!=='Município')
+      health.slice(25).filter(r=>r[1]&&r[1].trim()&&r[1]!=='MunicÃ­pio')
             .map(r=>r[1].trim().replace(/^\xa0/,''))
     );
     if(ativosNomes.size>0){
@@ -528,15 +528,59 @@ async function init(){
     }
 
     const badge = document.getElementById('sync-badge');
-    badge.textContent='✓ atualizado';badge.style.color='#10b981';badge.style.background='#10b98115';
+    badge.textContent='â atualizado';badge.style.color='#10b981';badge.style.background='#10b98115';
   }catch(e){
     console.error(e);
     const badge=document.getElementById('sync-badge');
-    badge.textContent='⚠ offline';badge.style.color='#f59e0b';
+    badge.textContent='â  offline';badge.style.color='#f59e0b';
   }
 }
 
 init();
 </script>
+
+// ── Health fetch (SQL/R1 do Google Sheets) ──
+(function(){
+  var SID='1xZsNM4dfv76u-LGm2chy__QKRhG5n1_MCZrMSzOiQVc';
+  var cb='__hCB'+Date.now();
+  window[cb]=function(d){
+    var counts={};
+    (d.table.rows||[]).forEach(function(r){
+      (r.c||[]).forEach(function(cell){
+        var v=cell&&cell.v?String(cell.v).trim():'';
+        if(/^(SQL|R1|R2|R3|Licitação)$/.test(v)) counts[v]=(counts[v]||0)+1;
+      });
+    });
+    window.__hS=counts;
+    delete window[cb];
+  };
+  var s=document.createElement('script');
+  s.src='https://docs.google.com/spreadsheets/d/'+SID+'/gviz/tq?gid=1516720884&tqx=out:json;responseHandler:'+cb+'&tq=select%20*';
+  document.head.appendChild(s);
+})();
+
+// ── Pipeline fetch (Meta/Forecast do Google Sheets) ──
+(function(){
+  var SID='1xZsNM4dfv76u-LGm2chy__QKRhG5n1_MCZrMSzOiQVc';
+  var cb='__pCB'+Date.now();
+  window[cb]=function(d){
+    var rows=d.table.rows||[];
+    var r0=rows[0]&&rows[0].c||[];
+    window.__pMeta=r0[1]&&r0[1].v||1000000;
+    // Última semana W = receita forecast
+    var semanas=rows.filter(function(r){var v=r.c&&r.c[0]&&r.c[0].v;return v&&/^W\d+/.test(String(v));});
+    var ul=semanas.length?semanas[semanas.length-1].c:[];
+    window.__pForecast=ul[1]&&ul[1].v||0;
+    window.__pMun=ul[3]&&ul[3].v||0;
+    delete window[cb];
+    // Atualiza KPIs no DOM se já renderizados
+    var els=document.querySelectorAll('.kpi-value, [class*="kpi"]');
+    // re-render só se a função existir
+    if(typeof window.__reRenderKPIs==='function') window.__reRenderKPIs();
+  };
+  var s=document.createElement('script');
+  s.src='https://docs.google.com/spreadsheets/d/'+SID+'/gviz/tq?gid=1021192406&tqx=out:json;responseHandler:'+cb+'&tq=select%20*';
+  document.head.appendChild(s);
+})();
 </body>
 </html>
