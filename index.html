@@ -179,7 +179,7 @@ footer{border-top:1px solid #0f172a;padding:11px 20px;display:flex;justify-conte
 <!-- FINANCEIRO -->
 <div id="tab-financeiro" class="tab fade">
   <div class="g2">
-    <div class="kpi" style="border:1px solid #3b82f628"><div class="kl">FUNDEB SP</div><div class="kv" style="color:#3b82f6">R$53,6B</div><div class="ks">2024 distribuído</div></div>
+    <div class="kpi" style="border:1px solid #3b82f628"><div class="kl">FUNDEB SP</div><div class="kv" style="color:#3b82f6">R$32,5B</div><div class="ks">2024 distribuído</div></div>
     <div class="kpi" style="border:1px solid #f59e0b28"><div class="kl">% FUNDEB Médio (pond.)</div><div class="kv" style="color:#f59e0b" id="fin-fundeb-pct">18,1%</div><div class="ks">Receita/FUNDEB disp.(40%)</div></div>
   </div>
   <div class="card">
@@ -523,18 +523,28 @@ async function init(){
 
     // ── FINANCEIRO: % FUNDEB ponderado e cenários ──
     // % FUNDEB ponderado por alunos: col[6]=alunos, col[10]=%fundeb (no Sheets com col Status)
-    console.log('pref[0] cols:', pref[0]);
-    console.log('pref[1] cols:', pref[1]);
+    // Encontrar coluna % FUNDEB — valor entre 0 e 1 (ex: 0.089)
+    // No Sheets com Status col: pode ser [10] ou [9] dependendo da versão
     var totAlu=0, totPond=0;
-    pref.forEach(function(r){
-      var al=parseFloat(r[6])||0;
-      var pf=parseFloat((r[10]||'').replace(',','.'))||0;
-      totAlu+=al; totPond+=al*pf;
-    });
-    if(totAlu>0){
-      var fp=(totPond/totAlu*100).toFixed(1)+'%';
-      document.getElementById('fin-fundeb-pct').textContent=fp;
-      document.getElementById('fin-fundeb-pct2').textContent=fp;
+    var pfIdx = -1;
+    if(pref.length>0){
+      // Detectar col % fundeb: primeira col após [6] com valor entre 0.05 e 0.5
+      for(var ci=7;ci<=12;ci++){
+        var v=parseFloat((pref[0][ci]||'').replace(',','.'));
+        if(v>0.05 && v<0.5){pfIdx=ci;break;}
+      }
+    }
+    if(pfIdx>=0){
+      pref.forEach(function(r){
+        var al=parseFloat(r[6])||0;
+        var pf=parseFloat((r[pfIdx]||'').replace(',','.'))||0;
+        totAlu+=al; totPond+=al*pf;
+      });
+      if(totAlu>0){
+        var fp=(totPond/totAlu*100).toFixed(1)+'%';
+        document.getElementById('fin-fundeb-pct').textContent=fp;
+        document.getElementById('fin-fundeb-pct2').textContent=fp;
+      }
     }
 
     // Cenários do Dashboard — rows 0=header(L4), 1=Agressivo(L5), 2=Realista(L6), 3=Conservador(L7)
