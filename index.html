@@ -427,21 +427,27 @@ function renderRegioes(ativosSet){
   // 6=RibPreto,7=Bauru,8=SJRPreto-Cat,9=SJRPreto-Fern,10=SJRPreto-Votu,
   // 11=Aracatuba,12=PPrudente,13=Marilia,14=Araraquara,15=Barretos,16=Franca,17=Itapeva
   const rows = DASH_DATA;
+  // Totais reais de municípios por região (contados nas abas regionais)
   const regioes = [
-    {nome:'RMGSP',     row:rows[0],  muns:['Osasco','Diadema','São Caetano do Sul','Franco da Rocha','Caieiras','Francisco Morato','Cajamar']},
-    {nome:'SJCampos',  row:rows[3],  muns:['São José dos Campos','Jacareí','São Sebastião','Caraguatatuba','Mogi das Cruzes','Santos']},
-    {nome:'Campinas',  row:rows[5],  muns:['Campinas','Paulínia','Pirassununga','Aguaí','São Carlos','Promissão','Novo Horizonte']},
-    {nome:'Bauru',     row:rows[7],  muns:['Itaí','Lins']},
-    {nome:'SJRPreto',  row:null,     muns:['Catanduva','Fernandópolis','Votuporanga']},
-    {nome:'PPrudente', row:rows[12], muns:['Presidente Prudente']},
-    {nome:'Araraquara',row:rows[14], muns:['São Carlos']},
-    {nome:'Itapeva',   row:rows[17], muns:['Itaí','Promissão','Penápolis','Novo Horizonte']},
+    {nome:'RMGSP',      row:rows[0],  tot:39, muns:['Osasco','Diadema','São Caetano do Sul','Franco da Rocha','Caieiras','Francisco Morato','Cajamar']},
+    {nome:'Baixada S.', row:rows[2],  tot:9,  muns:['Santos']},
+    {nome:'SJCampos',   row:rows[3],  tot:39, muns:['São José dos Campos','Jacareí','São Sebastião','Caraguatatuba','Mogi das Cruzes']},
+    {nome:'Campinas',   row:rows[5],  tot:90, muns:['Campinas','Paulínia','Pirassununga','Aguaí','São Carlos','Promissão','Novo Horizonte']},
+    {nome:'Sorocaba',   row:rows[4],  tot:48, muns:[]},
+    {nome:'Rib.Preto',  row:rows[6],  tot:25, muns:[]},
+    {nome:'Bauru',      row:rows[7],  tot:39, muns:['Itaí','Lins']},
+    {nome:'SJRPreto',   row:null,     tot:17+1+1, muns:['Catanduva','Fernandópolis','Votuporanga']},
+    {nome:'PPrudente',  row:rows[12], tot:54, muns:['Presidente Prudente']},
+    {nome:'Araraquara', row:rows[14], tot:26, muns:[]},
+    {nome:'Barretos',   row:rows[15], tot:19, muns:[]},
+    {nome:'Franca',     row:rows[16], tot:23, muns:[]},
+    {nome:'Itapeva',    row:rows[17], tot:32, muns:['Penápolis','Novo Horizonte']},
   ];
 
   document.getElementById('regioes').innerHTML=regioes.map(r=>{
     const at=r.muns.filter(m=>ativosSet.has(m)).length;
     const rec=r.row?num(r.row[10]):0;
-    const tot=r.row?parseInt(r.row[7])||0:r.muns.length; // total municípios da região
+    const tot=r.tot||0; // total real de municípios da região
     const maxTot=Math.max(tot,1);
     return '<div class="grow" style="border-bottom:1px solid #0f172a">'
       +'<div style="font-weight:600;font-size:12px">'+r.nome+'</div>'
@@ -517,7 +523,7 @@ async function init(){
       const somVal   = num(totalRow[10]);
       const alunosVal= num(totalRow[9]);
       const munVal   = parseInt(totalRow[7])||29;
-      const penVal   = num(totalRow[8])*100;
+      const penVal   = parseFloat(totalRow[8])*100||0; // já é decimal ex: 0.0109
       document.getElementById('m-som').textContent    = fmt(somVal);
       document.getElementById('m-alunos').textContent = Math.round(alunosVal).toLocaleString('pt-BR');
       document.getElementById('m-mun').textContent    = munVal+' municípios';
