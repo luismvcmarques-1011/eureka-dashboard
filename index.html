@@ -112,185 +112,116 @@ function fetchTab(name){
     window[cb]=function(d){cleanup();try{_cache[name]=gvizParse(d);ok(_cache[name]);}catch(e){fail(e);}};
     s=document.createElement('script');
     s.src='https://docs.google.com/spreadsheets/d/'+SID+'/gviz/tq?gid='+GIDS[name]+'&tqx=out:json;responseHandler:'+cb+'&tq=select%20*';
-    s.onerror=function(){cleanup();fail(new Error('Falha. Planilha deve estar compartilhada como "Qualquer pessoa com o link".'));};
+    s.onerror=function(){cleanup();fail(new Error('Falha ao carregar. Verifique compartilhamento da planilha.'));};
     document.head.appendChild(s);
   });
 }
 function gvizParse(d){
   var t=d.table;if(!t||!t.cols)throw new Error('Resposta inválida');
-  var h=t.cols.map(function(c){return(c.label||c.id||'').trim();});
-  return(t.rows||[]).map(function(r){var o={};h.forEach(function(k,i){var c=r.c?r.c[i]:null;o[k]=(c&&c.v!=null)?c.v:'';});return o;});
+  var hdrs=t.cols.map(function(c){return(c.label||c.id||'').trim();});
+  return(t.rows||[]).map(function(r){var o={};hdrs.forEach(function(h,i){var c=r.c?r.c[i]:null;o[h]=(c&&c.v!=null)?c.v:'';});return o;});
 }
-
-// brl: formata número em reais no padrão pt-BR (R$1,0M, R$590k)
 function brl(n){
   if(n==null||n==='')return'—';
   var v=typeof n==='number'?n:parseFloat(String(n).replace(/[R$s]/g,'').replace(/./g,'').replace(',','.'));
   if(isNaN(v)||v===0)return'—';
-  var abs=Math.abs(v),sign=v<0?'-':'';
-  if(abs>=1e6)return sign+'R$'+(abs/1e6).toFixed(1).replace('.',',')+'M';
-  if(abs>=1e3)return sign+'R$'+Math.round(abs/1e3)+'k';
-  return sign+'R$'+Math.round(abs);
+  var abs=Math.abs(v),sg=v<0?'-':'';
+  if(abs>=1e6)return sg+'R$'+(abs/1e6).toFixed(1).replace('.',',')+'M';
+  if(abs>=1e3)return sg+'R$'+Math.round(abs/1e3)+'k';
+  return sg+'R$'+Math.round(abs);
 }
 function pct(n){if(n==null||n==='')return'—';var v=typeof n==='number'?n:parseFloat(n);return isNaN(v)?String(n):(v*100).toFixed(1)+'%';}
 function fmtNum(n){if(n==null||n==='')return'—';return Number(n).toLocaleString('pt-BR');}
 function wkInfo(){var n=new Date(),s=new Date(n.getFullYear(),0,1),wk=Math.ceil(((n-s)/86400000+s.getDay()+1)/7),q=Math.ceil((n.getMonth()+1)/3),hm=String(n.getHours()).padStart(2,'0')+':'+String(n.getMinutes()).padStart(2,'0');return{wk:wk,q:q,yr:n.getFullYear(),hm:hm};}
 function pill(cls,txt){return'<span class="pill '+cls+'">'+txt+'</span>';}
-function farolPill(f){var m={Q:['pQ','Quente'],M:['pM','Morno'],F:['pF','Frio']};var p=m[String(f||'').trim()];if(!p)return pill('pF',f||'—');return pill(p[0],p[1]);}
+function farolPill(f){var m={Q:['pQ','Quente'],M:['pM','Morno'],F:['pF','Frio']};var p=m[String(f||'').trim()];return p?pill(p[0],p[1]):pill('pF',f||'—');}
 function statusPill(s){var m={R1:'pR1',R2:'pR2',SQL:'pSQL'};return pill(m[s]||'pF',s||'—');}
-function kpi(label,value,sub,accent,pulse){
-  var shine=pulse?'<div class="kc-shine" style="background:linear-gradient(90deg,transparent,'+accent+',transparent)"></div>':'';
-  return'<div class="kc" style="border:1px solid '+accent+'28">'+shine+'<div class="kl">'+label+'</div><div class="kv" style="color:'+accent+'">'+value+'</div>'+(sub?'<div class="ks">'+sub+'</div>':'')+'</div>';
+function kpi(lbl,val,sub,acc,pulse){
+  var sh=pulse?'<div class="kc-shine" style="background:linear-gradient(90deg,transparent,'+acc+',transparent)"></div>':'';
+  return'<div class="kc" style="border:1px solid '+acc+'28">'+sh+'<div class="kl">'+lbl+'</div><div class="kv" style="color:'+acc+'">'+val+'</div>'+(sub?'<div class="ks">'+sub+'</div>':'')+'</div>';
 }
-
 function renderPipeline(rows){
-  // Estrutura confirmada:
-  // rows[0]: B=meta(1000000), D=receita_acumulada
-  // rows[2]: cabeçalho semanas
-  // rows[3+]: W13..W16 — [0]=semana,[1]=receita,[2]=delta%,[3]=qtd_mun
   var r0=rows[0]||{};
   var meta=Number(r0['B'])||1000000;
-
-  // Semanas: linhas onde primeira coluna começa com W
-  var semanas=rows.filter(function(r){return r['A']&&/^Wd+/.test(String(r['A']));});
+  var semanas=rows.filter(function(r){return r['A']&&/^W\d+/.test(String(r['A']));});
   var ul=semanas.length>0?semanas[semanas.length-1]:{};
-
-  // Receita atual = coluna B da última semana
   var forecast=Number(ul['B'])||0;
-  // Municípios ativos = coluna D da última semana
   var munAtual=Number(ul['D'])||0;
-  // Etapa = coluna K (posição 20, label varia) — pega da linha 0 coluna K
-  var etapa=r0['K']||'R1';
-
+  var etapa='R1';
+  // Etapa: pega da coluna K da linha 0 (posição 10)
+  var r0Keys=Object.keys(r0);
+  if(r0Keys[10]!==undefined)etapa=String(r0[r0Keys[10]]||'R1');
   var gap=forecast-meta;
   var pBar=meta>0?Math.min(200,Math.max(0,(forecast/meta)*100)).toFixed(1):'0.0';
-  var gapAbs=Math.abs(gap);
-  var gapLbl=gap>=0?'✅ acima da meta':'falta fechar';
   var gapClr=gap>=0?'#10b981':'#f59e0b';
-
+  var gapLbl=gap>=0?'✅ acima da meta':'❌ falta fechar';
   var info=wkInfo();
   document.getElementById('wbadge').textContent='W'+info.wk+' · Q'+info.q+' '+info.yr;
   document.getElementById('fwk').textContent='Semana '+info.wk+' · Q'+info.q+' '+info.yr;
-
   var h='<div class="kg kg-4">';
   h+=kpi('Meta Q2',brl(meta),'objetivo do trimestre','#3b82f6',true);
   h+=kpi('Forecast Atual',brl(forecast),pBar+'% da meta','#10b981',false);
   h+=kpi('Municípios Ativos',String(munAtual),'W'+info.wk+' · Etapa '+etapa,'#8b5cf6',false);
-  h+=kpi('Gap (B/W)',brl(gapAbs),gapLbl,gapClr,false);
+  h+=kpi('Gap (B/W)',brl(Math.abs(gap)),gapLbl,gapClr,false);
   h+='</div>';
-
   h+='<div class="pbar-wrap"><div class="pbar-top"><div><div class="pbar-lbl">Progresso Meta Q2</div>';
   h+='<div class="pbar-val">'+brl(forecast)+'<span style="color:var(--mu);font-size:12px;font-weight:400;margin-left:6px">/ '+brl(meta)+'</span></div></div>';
   h+='<div class="pbar-pct" style="color:'+(gap>=0?'var(--ac2)':'var(--ac)')+'">'+pBar+'%</div></div>';
   h+='<div class="pbar-bg"><div class="pbar-fill" style="width:'+Math.min(100,parseFloat(pBar))+'%"></div></div>';
-  h+='<div class="pbar-sub">'+(gap>=0?'🎉 Meta atingida! Acima em '+brl(gapAbs):'Faltam '+brl(gapAbs)+' para fechar')+' · '+semanas.length+' semanas registradas</div></div>';
-
+  h+='<div class="pbar-sub">'+(gap>=0?'🎉 Acima em '+brl(Math.abs(gap)):'Faltam '+brl(Math.abs(gap))+' para fechar')+' · '+semanas.length+' semanas registradas</div></div>';
   if(semanas.length>0){
     h+='<div class="sh"><span class="st">Evolução Semanal</span><span class="ss">'+semanas.length+' semanas</span></div>';
-    h+='<div class="tw"><table><thead><tr><th>Semana</th><th>Receita Pot.</th><th>Δ Semana</th><th>Municípios</th><th>Ticket/Aluno</th></tr></thead><tbody>';
+    h+='<div class="tw"><table><thead><tr><th>Semana</th><th>Receita Pot.</th><th>Δ Semana</th><th>Municípios</th></tr></thead><tbody>';
     semanas.forEach(function(r){
-      var dPct=(r['C']!==''&&r['C']!=null)?((Number(r['C'])*100).toFixed(1)+'%'):'—';
-      var ticket=(r['T']!==''&&r['T']!=null)?('R$ '+Number(r['T']).toFixed(0)):'—';
+      var dPct=(r['C']!==''&&r['C']!=null&&r['C']!==0)?((Number(r['C'])*100).toFixed(1)+'%'):'—';
       h+='<tr>';
       h+='<td style="font-family:var(--mono);color:var(--ac);font-weight:700">'+r['A']+'</td>';
       h+='<td style="font-family:var(--mono);color:var(--ac2);font-weight:600">'+brl(r['B'])+'</td>';
       h+='<td style="font-family:var(--mono);color:'+(Number(r['C'])>=0?'var(--ac2)':'var(--dg)')+'">'+dPct+'</td>';
-      h+='<td style="font-family:var(--mono)">'+( r['D']||'—')+'</td>';
-      h+='<td style="font-family:var(--mono);color:var(--mu2)">'+ticket+'</td>';
+      h+='<td style="font-family:var(--mono)">'+(r['D']||'—')+'</td>';
       h+='</tr>';
     });
     h+='</tbody></table></div>';
   }
   return h;
 }
-
 function renderHealth(rows){
-  if(!rows||rows.length===0)return'<div class="err-box">Sem dados na aba Health.</div>';
+  if(!rows||!rows.length)return'<div class="err-box">Sem dados na aba Health.</div>';
   var keys=Object.keys(rows[0]||{});
-  var porStatus={},porFarol={};
-  rows.forEach(function(r){
-    keys.forEach(function(k){
-      var v=String(r[k]||'').trim();
-      if(/^(SQL|R1|R2|R3|Licitação)$/.test(v))porStatus[v]=(porStatus[v]||0)+1;
-      if(/^[QMF]$/.test(v))porFarol[v]=(porFarol[v]||0)+1;
-    });
-  });
-  var total=Object.values(porStatus).reduce(function(s,n){return s+n;},0);
-  var funil=[
-    {e:'SQL',c:porStatus['SQL']||0,cor:'#7dd3fc',p:25},
-    {e:'R1', c:porStatus['R1'] ||0,cor:'#3b82f6',p:30},
-    {e:'R2', c:porStatus['R2'] ||0,cor:'#8b5cf6',p:40},
-    {e:'R3', c:porStatus['R3'] ||0,cor:'#f59e0b',p:50},
-    {e:'Licitação',c:porStatus['Licitação']||0,cor:'#10b981',p:85}
-  ];
+  var pS={},pF={};
+  rows.forEach(function(r){keys.forEach(function(k){var v=String(r[k]||'').trim();if(/^(SQL|R1|R2|R3|Licitação)$/.test(v))pS[v]=(pS[v]||0)+1;if(/^[QMF]$/.test(v))pF[v]=(pF[v]||0)+1;});});
+  var total=Object.values(pS).reduce(function(s,n){return s+n;},0);
+  var funil=[{e:'SQL',c:pS['SQL']||0,cor:'#7dd3fc',p:25},{e:'R1',c:pS['R1']||0,cor:'#3b82f6',p:30},{e:'R2',c:pS['R2']||0,cor:'#8b5cf6',p:40},{e:'R3',c:pS['R3']||0,cor:'#f59e0b',p:50},{e:'Licitação',c:pS['Licitação']||0,cor:'#10b981',p:85}];
   var maxC=Math.max(1,Math.max.apply(null,funil.map(function(f){return f.c;})));
-
   var h='<div class="kg kg-4">';
   h+=kpi('Total no Pipeline',String(total||rows.length),'municípios','#3b82f6',true);
-  h+=kpi('🔥 Quente',String(porFarol['Q']||0),'alta prioridade','#ef4444',false);
-  h+=kpi('🟡 Morno',String(porFarol['M']||0),'média prioridade','#f59e0b',false);
-  h+=kpi('❄️ Frio',String(porFarol['F']||0),'baixa prioridade','#64748b',false);
+  h+=kpi('🔥 Quente',String(pF['Q']||0),'alta prioridade','#ef4444',false);
+  h+=kpi('🟡 Morno',String(pF['M']||0),'média prioridade','#f59e0b',false);
+  h+=kpi('❄️ Frio',String(pF['F']||0),'baixa prioridade','#64748b',false);
   h+='</div>';
-
   if(total>0){
     h+='<div class="sh"><span class="st">Funil de Vendas</span><span class="ss">'+total+' municípios</span></div><div class="card">';
-    funil.forEach(function(f){
-      var w=f.c>0?Math.max(5,(f.c/maxC)*85):0;
-      h+='<div style="display:flex;align-items:center;gap:12px;margin-bottom:12px">';
-      h+='<div style="width:70px;color:var(--mu3);font-size:11px;font-family:var(--mono);text-align:right;flex-shrink:0">'+f.e+'</div>';
-      h+='<div style="flex:1;background:var(--sf2);border-radius:6px;height:32px;overflow:hidden">';
-      h+='<div style="width:'+w+'%;height:100%;background:'+f.cor+';display:flex;align-items:center;padding-left:10px;border-radius:6px;transition:width .8s ease">';
-      if(f.c>0)h+='<span style="color:#fff;font-size:14px;font-weight:700;font-family:var(--mono)">'+f.c+'</span>';
-      h+='</div></div>';
-      h+='<div style="width:40px;color:var(--mu2);font-size:10px;font-family:var(--mono);text-align:right;flex-shrink:0">'+f.p+'%</div>';
-      h+='</div>';
-    });
+    funil.forEach(function(f){var w=f.c>0?Math.max(5,(f.c/maxC)*85):0;h+='<div style="display:flex;align-items:center;gap:12px;margin-bottom:12px"><div style="width:70px;color:var(--mu3);font-size:11px;font-family:var(--mono);text-align:right;flex-shrink:0">'+f.e+'</div><div style="flex:1;background:var(--sf2);border-radius:6px;height:32px;overflow:hidden"><div style="width:'+w+'%;height:100%;background:'+f.cor+';display:flex;align-items:center;padding-left:10px;border-radius:6px;transition:width .8s ease">'+(f.c>0?'<span style="color:#fff;font-size:14px;font-weight:700;font-family:var(--mono)">'+f.c+'</span>':'')+'</div></div><div style="width:40px;color:var(--mu2);font-size:10px;font-family:var(--mono);text-align:right">'+f.p+'%</div></div>';});
     h+='</div>';
   }
-
-  var actCols=keys.filter(function(k){return rows.some(function(r){return r[k]!==''&&r[k]!=null;});}).slice(0,12);
-  h+='<div class="sh"><span class="st">Dados Health</span><span class="ss">'+rows.length+' linhas</span></div>';
-  h+='<div class="tw"><table><thead><tr>'+actCols.map(function(c){return'<th>'+c+'</th>';}).join('')+'</tr></thead><tbody>';
-  rows.filter(function(r){return actCols.some(function(c){return r[c]!==''&&r[c]!=null;});}).forEach(function(r){
-    h+='<tr>'+actCols.map(function(c){
-      var v=r[c];
-      if(v===''||v==null)return'<td style="color:var(--mu2)">—</td>';
-      if(/farol/i.test(c))return'<td>'+farolPill(String(v))+'</td>';
-      if(/status/i.test(c))return'<td>'+statusPill(String(v))+'</td>';
-      if(typeof v==='number'&&v>=1000)return'<td style="font-family:var(--mono);color:var(--ac2)">'+brl(v)+'</td>';
-      return'<td style="font-size:12px">'+v+'</td>';
-    }).join('')+'</tr>';
-  });
+  var ac=keys.filter(function(k){return rows.some(function(r){return r[k]!==''&&r[k]!=null;});}).slice(0,12);
+  h+='<div class="sh"><span class="st">Dados Health</span><span class="ss">'+rows.length+' linhas</span></div><div class="tw"><table><thead><tr>'+ac.map(function(c){return'<th>'+c+'</th>';}).join('')+'</tr></thead><tbody>';
+  rows.filter(function(r){return ac.some(function(c){return r[c]!==''&&r[c]!=null;});}).forEach(function(r){h+='<tr>'+ac.map(function(c){var v=r[c];if(v===''||v==null)return'<td style="color:var(--mu2)">—</td>';if(/farol/i.test(c))return'<td>'+farolPill(String(v))+'</td>';if(/status/i.test(c))return'<td>'+statusPill(String(v))+'</td>';if(typeof v==='number'&&v>=1000)return'<td style="font-family:var(--mono);color:var(--ac2)">'+brl(v)+'</td>';return'<td style="font-size:12px">'+v+'</td>';}).join('')+'</tr>';});
   h+='</tbody></table></div>';
   return h;
 }
-
 function renderCobertura(rows){
   var r0=rows[0]||{},keys=Object.keys(r0);
-  var labels=['Repasse/Aluno EF1','Repasse/Aluno EF2','Impostos','Part. Redesa','Mín. Receita/Mun','Mín. Alunos/Mun','Mun. Atendidos','% do SOM'];
+  var labs=['Repasse/Aluno EF1','Repasse/Aluno EF2','Impostos','Part. Redesa','Mín. Receita/Mun','Mín. Alunos/Mun','Mun. Atendidos','% do SOM'];
   var h='<div class="sh"><span class="st">Parâmetros do Modelo</span></div><div class="pg">';
-  keys.slice(0,8).forEach(function(k,i){
-    var v=r0[k],fmt='';
-    if(v===''||v==null)fmt='—';
-    else if(typeof v==='number'&&v>0&&v<1)fmt=(v*100).toFixed(1)+'%';
-    else if(typeof v==='number'&&v>=400)fmt='R$ '+v.toLocaleString('pt-BR');
-    else fmt=String(v);
-    h+='<div class="pc"><div class="pl">'+(labels[i]||k)+'</div><div class="pv">'+fmt+'</div></div>';
-  });
+  keys.slice(0,8).forEach(function(k,i){var v=r0[k],fmt='';if(v===''||v==null)fmt='—';else if(typeof v==='number'&&v>0&&v<1)fmt=(v*100).toFixed(1)+'%';else if(typeof v==='number'&&v>=400)fmt='R$ '+v.toLocaleString('pt-BR');else fmt=String(v);h+='<div class="pc"><div class="pl">'+(labs[i]||k)+'</div><div class="pv">'+fmt+'</div></div>';});
   h+='</div>';
   var lins=rows.slice(1).filter(function(r){return Object.values(r).some(function(v){return v!==''&&v!=null;});});
-  if(lins.length>0){
-    var ac=Object.keys(lins[0]).filter(function(k){return lins.some(function(r){return r[k]!==''&&r[k]!=null;});}).slice(0,8);
-    h+='<div class="sh"><span class="st">Cenários do Modelo</span><span class="ss">'+lins.length+' linhas</span></div>';
-    h+='<div class="tw"><table><thead><tr>'+ac.map(function(c){return'<th>'+c+'</th>';}).join('')+'</tr></thead><tbody>';
-    lins.forEach(function(r){h+='<tr>'+ac.map(function(c){var v=r[c];if(v===''||v==null)return'<td style="color:var(--mu2)">—</td>';if(typeof v==='number'&&v>0&&v<1)return'<td style="font-family:var(--mono)">'+(v*100).toFixed(1)+'%</td>';if(typeof v==='number'&&v>=1000)return'<td style="font-family:var(--mono);color:var(--ac2)">'+brl(v)+'</td>';return'<td style="font-size:12px">'+v+'</td>';}).join('')+'</tr>';});
-    h+='</tbody></table></div>';
-  }
+  if(lins.length>0){var ac=Object.keys(lins[0]).filter(function(k){return lins.some(function(r){return r[k]!==''&&r[k]!=null;});}).slice(0,8);h+='<div class="sh"><span class="st">Cenários do Modelo</span><span class="ss">'+lins.length+' linhas</span></div><div class="tw"><table><thead><tr>'+ac.map(function(c){return'<th>'+c+'</th>';}).join('')+'</tr></thead><tbody>';lins.forEach(function(r){h+='<tr>'+ac.map(function(c){var v=r[c];if(v===''||v==null)return'<td style="color:var(--mu2)">—</td>';if(typeof v==='number'&&v>0&&v<1)return'<td style="font-family:var(--mono)">'+(v*100).toFixed(1)+'%</td>';if(typeof v==='number'&&v>=1000)return'<td style="font-family:var(--mono);color:var(--ac2)">'+brl(v)+'</td>';return'<td style="font-size:12px">'+v+'</td>';}).join('')+'</tr>';});h+='</tbody></table></div>';}
   return h;
 }
-
 function renderMunicipios(rows){
-  var C={idx:'A',mun:'B',pref:'PREFEITO(A)',ind:'Indicação',farol:'Farol',alunos:'TAM (Alunos)',fundeb:'Fundeb (Potencial)',status:'Status',receita:'Receita Potencial',pctF:'% Fundeb'};
+  var C={idx:'A',mun:'B',pref:'PREFEITO(A)',ind:'Indicação',farol:'Farol',alunos:'TAM (Alunos)',status:'Status',receita:'Receita Potencial',pctF:'% Fundeb'};
   var data=rows.filter(function(r){return r[C.mun]&&String(r[C.mun]).trim()!=='';});
   var totA=data.reduce(function(s,r){return s+(Number(r[C.alunos])||0);},0);
   var totR=data.reduce(function(s,r){return s+(Number(r[C.receita])||0);},0);
@@ -306,35 +237,14 @@ function renderMunicipios(rows){
   var sorted=data.slice().sort(function(a,b){return(Number(b[C.receita])||0)-(Number(a[C.receita])||0);});
   h+='<div class="sh"><span class="st">Lista de Municípios</span><span class="ss">'+data.length+' · por receita</span></div>';
   h+='<div class="tw"><table><thead><tr><th>#</th><th>Município</th><th>Farol</th><th>Status</th><th>Alunos</th><th>Receita Pot.</th><th>% FUNDEB</th><th>Indicação</th><th>Prefeito(a)</th></tr></thead><tbody>';
-  sorted.forEach(function(r){
-    var pF=r[C.pctF],pFS=(pF!==''&&pF!=null)?((Number(pF)*100).toFixed(1)+'%'):'—';
-    h+='<tr>';
-    h+='<td style="font-family:var(--mono);color:var(--mu2);font-size:11px">'+(r[C.idx]||'—')+'</td>';
-    h+='<td><strong style="font-family:var(--syne)">'+(r[C.mun]||'—')+'</strong></td>';
-    h+='<td>'+farolPill(r[C.farol])+'</td>';
-    h+='<td>'+statusPill(r[C.status])+'</td>';
-    h+='<td style="font-family:var(--mono)">'+(r[C.alunos]?fmtNum(r[C.alunos]):'—')+'</td>';
-    h+='<td style="font-family:var(--mono);color:var(--ac2);font-weight:600">'+brl(r[C.receita])+'</td>';
-    h+='<td style="font-family:var(--mono);color:var(--mu2)">'+pFS+'</td>';
-    h+='<td style="font-size:12px;color:var(--mu2)">'+(r[C.ind]||'—')+'</td>';
-    h+='<td style="font-size:12px;color:var(--mu2)">'+(r[C.pref]||'—')+'</td>';
-    h+='</tr>';
-  });
+  sorted.forEach(function(r){var pF=r[C.pctF],pFS=(pF!==''&&pF!=null)?((Number(pF)*100).toFixed(1)+'%'):'—';h+='<tr><td style="font-family:var(--mono);color:var(--mu2);font-size:11px">'+(r[C.idx]||'—')+'</td><td><strong style="font-family:var(--syne)">'+(r[C.mun]||'—')+'</strong></td><td>'+farolPill(r[C.farol])+'</td><td>'+statusPill(r[C.status])+'</td><td style="font-family:var(--mono)">'+(r[C.alunos]?fmtNum(r[C.alunos]):'—')+'</td><td style="font-family:var(--mono);color:var(--ac2);font-weight:600">'+brl(r[C.receita])+'</td><td style="font-family:var(--mono);color:var(--mu2)">'+pFS+'</td><td style="font-size:12px;color:var(--mu2)">'+(r[C.ind]||'—')+'</td><td style="font-size:12px;color:var(--mu2)">'+(r[C.pref]||'—')+'</td></tr>';});
   h+='</tbody></table></div>';
   return h;
 }
-
 function loadTab(name){
   var el=document.getElementById('p-'+name);if(!el)return;
   el.innerHTML='<div class="loading"><div class="spinner"></div><span class="loading-txt">Carregando '+name+'…</span></div>';
-  fetchTab(name).then(function(rows){
-    var h='';
-    if(name==='pipeline')h=renderPipeline(rows);
-    else if(name==='health')h=renderHealth(rows);
-    else if(name==='cobertura')h=renderCobertura(rows);
-    else if(name==='municipios')h=renderMunicipios(rows);
-    el.innerHTML=h||'<div class="err-box">Sem dados.</div>';
-  }).catch(function(err){el.innerHTML='<div class="err-box">❌ Erro ao carregar "'+name+'": '+err.message+'</div>';});
+  fetchTab(name).then(function(rows){var h='';if(name==='pipeline')h=renderPipeline(rows);else if(name==='health')h=renderHealth(rows);else if(name==='cobertura')h=renderCobertura(rows);else if(name==='municipios')h=renderMunicipios(rows);el.innerHTML=h||'<div class="err-box">Sem dados.</div>';}).catch(function(err){el.innerHTML='<div class="err-box">❌ Erro ao carregar "'+name+'": '+err.message+'</div>';});
 }
 function sw(name){document.querySelectorAll('.tab').forEach(function(t){t.classList.remove('active');});document.querySelectorAll('.pane').forEach(function(p){p.classList.remove('active');});document.querySelector('[data-tab="'+name+'"]').classList.add('active');document.getElementById('p-'+name).classList.add('active');}
 function reloadAll(){Object.keys(_cache).forEach(function(k){delete _cache[k];});var info=wkInfo();document.getElementById('wbadge').textContent='W'+info.wk+' · Q'+info.q+' '+info.yr;document.getElementById('fwk').textContent='Semana '+info.wk+' · Q'+info.q+' '+info.yr;['pipeline','health','cobertura','municipios'].forEach(loadTab);}
