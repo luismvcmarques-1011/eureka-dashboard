@@ -507,7 +507,8 @@ async function init(){
       document.getElementById('wk').textContent      = semana+' · Q2 2026';
       document.getElementById('footer-wk').textContent = semana+' · Q2 2026';
       document.getElementById('pg-v').innerHTML      = fmt(receita)+' <span style="color:#475569;font-size:12px;font-weight:400">/ '+fmt(meta)+'</span>';
-      document.getElementById('pg-p').textContent    = pct.toFixed(1)+'%';
+      var excessPct = pct > 100 ? '+' + (pct-100).toFixed(1)+'% acima' : pct.toFixed(1)+'%';
+      document.getElementById('pg-p').textContent    = excessPct;
       document.getElementById('pg-b').style.width    = Math.min(100,pct)+'%';
       document.getElementById('pg-s').textContent    = fmt(receita)+' de '+fmt(meta)+' · '+semana;
       var bwEl  = document.getElementById('k-bw');
