@@ -547,22 +547,22 @@ async function init(){
 
     // Visitas SQL — da aba Health apenas
     const sqlHealth = healthMuns.filter(m=>m.status==='SQL');
-    document.getElementById('vis-badge').textContent=`● ${sqlHealth.length} agendada${sqlHealth.length!==1?'s':''}`;
+    document.getElementById('vis-badge').textContent='● '+sqlHealth.length+' agendada'+(sqlHealth.length!==1?'s':'');
     if(sqlHealth.length===0){
-      document.getElementById('vis-cards').innerHTML='<div style="color:#475569;font-size:11px;font-family:monospace;text-align:center;padding:16px">Nenhuma visita agendada.<br>Adicione <strong style="color:#3b82f6">SQL</strong> na coluna Status da aba Health.</div>';
+      document.getElementById('vis-cards').innerHTML='<div style="color:#475569;font-size:11px;font-family:monospace;text-align:center;padding:16px">Nenhuma visita agendada. Adicione SQL na coluna Status da aba Health.</div>';
     } else {
-      document.getElementById('vis-cards').innerHTML=`<div style="display:grid;grid-template-columns:repeat(${Math.min(sqlHealth.length,5)},1fr);gap:10px">
-        ${sqlHealth.map(m=>{
-          const cor=COR[m.farol]||'#64748b';
-          return '<div style="background:#0f172a;border-top:2px solid '+cor+';border:1px solid '+cor+'20;border-radius:10px;padding:11px 12px">'
-            +'<div style="font-family:'Syne',sans-serif;font-size:11px;font-weight:700;margin-bottom:5px;color:#f1f5f9">'+m.nome+'</div>'
-            +'<span class="badge" style="background:'+cor+'18;border:1px solid '+cor+'40;color:'+cor+';margin-bottom:7px;display:inline-flex"><span style="width:5px;height:5px;border-radius:50%;background:'+cor+';display:inline-block"></span>'+(FL[m.farol]||'—')+'</span>'
-            +'<div style="color:#10b981;font-family:monospace;font-size:12px;font-weight:600;margin-bottom:2px">'+fmt(m.receita)+'</div>'
-            +'<div style="color:#475569;font-size:9px;font-family:monospace">'+m.alunos.toLocaleString('pt-BR')+' alunos</div>'
-            +'<div style="color:#475569;font-size:9px;font-family:monospace;margin-top:2px">'+m.regiao+'</div>'
-            +'</div>';
-        }).join('')}
-      </div>`;
+      let vhtml='<div style="display:grid;grid-template-columns:repeat('+Math.min(sqlHealth.length,5)+',1fr);gap:10px">';
+      sqlHealth.forEach(function(m){
+        const cor=COR[m.farol]||'#64748b';
+        vhtml+='<div style="background:#0f172a;border-top:2px solid '+cor+';border:1px solid '+cor+'20;border-radius:10px;padding:11px 12px">';
+        vhtml+='<div style="font-size:11px;font-weight:700;margin-bottom:5px;color:#f1f5f9">'+m.nome+'</div>';
+        vhtml+='<div style="color:#10b981;font-family:monospace;font-size:12px;font-weight:600;margin-bottom:4px">'+fmt(m.receita)+'</div>';
+        vhtml+='<div style="color:#475569;font-size:9px;font-family:monospace">'+m.alunos.toLocaleString('pt-BR')+' alunos</div>';
+        vhtml+='<div style="color:#475569;font-size:9px;font-family:monospace;margin-top:2px">'+m.regiao+'</div>';
+        vhtml+='</div>';
+      });
+      vhtml+='</div>';
+      document.getElementById('vis-cards').innerHTML=vhtml;
     }
 
     const s=document.getElementById('sync');
