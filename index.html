@@ -180,29 +180,29 @@ footer{border-top:1px solid #0f172a;padding:11px 20px;display:flex;justify-conte
 <div id="tab-financeiro" class="tab fade">
   <div class="g2">
     <div class="kpi" style="border:1px solid #3b82f628"><div class="kl">FUNDEB SP</div><div class="kv" style="color:#3b82f6">R$53,6B</div><div class="ks">2024 distribuído</div></div>
-    <div class="kpi" style="border:1px solid #f59e0b28"><div class="kl">% FUNDEB Médio (pond.)</div><div class="kv" style="color:#f59e0b">20,5%</div><div class="ks">Receita/FUNDEB disp.(40%)</div></div>
+    <div class="kpi" style="border:1px solid #f59e0b28"><div class="kl">% FUNDEB Médio (pond.)</div><div class="kv" style="color:#f59e0b" id="fin-fundeb-pct">18,1%</div><div class="ks">Receita/FUNDEB disp.(40%)</div></div>
   </div>
   <div class="card">
     <div class="ct">Cenários — SOM Mapeado</div>
     <div class="g3s">
       <div style="background:#64748b08;border:1px solid #64748b28;border-radius:12px;padding:14px 16px">
         <div style="color:#64748b;font-size:9px;font-family:monospace;letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px">Conservador</div>
-        <div style="color:#f1f5f9;font-size:clamp(16px,4.5vw,22px);font-weight:700;font-family:'Syne',sans-serif;margin-bottom:4px">R$6,6M</div>
-        <div style="color:#475569;font-size:10px;font-family:monospace">Conversão: 25%</div>
+        <div style="color:#f1f5f9;font-size:clamp(16px,4.5vw,22px);font-weight:700;font-family:'Syne',sans-serif;margin-bottom:4px" id="fin-conservador">R$7,5M</div>
+        <div style="color:#475569;font-size:10px;font-family:monospace" id="fin-conservador-conv">Conversão: 25%</div>
       </div>
       <div style="background:#3b82f608;border:1px solid #3b82f628;border-radius:12px;padding:14px 16px">
         <div style="color:#3b82f6;font-size:9px;font-family:monospace;letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px">Realista</div>
-        <div style="color:#f1f5f9;font-size:clamp(16px,4.5vw,22px);font-weight:700;font-family:'Syne',sans-serif;margin-bottom:4px">R$13,1M</div>
-        <div style="color:#475569;font-size:10px;font-family:monospace">Conversão: 50%</div>
+        <div style="color:#f1f5f9;font-size:clamp(16px,4.5vw,22px);font-weight:700;font-family:'Syne',sans-serif;margin-bottom:4px" id="fin-realista">R$15,0M</div>
+        <div style="color:#475569;font-size:10px;font-family:monospace" id="fin-realista-conv">Conversão: 50%</div>
       </div>
       <div style="background:#10b98108;border:1px solid #10b98128;border-radius:12px;padding:14px 16px">
         <div style="color:#10b981;font-size:9px;font-family:monospace;letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px">Agressivo</div>
-        <div style="color:#f1f5f9;font-size:clamp(16px,4.5vw,22px);font-weight:700;font-family:'Syne',sans-serif;margin-bottom:4px">R$26,2M</div>
-        <div style="color:#475569;font-size:10px;font-family:monospace">Conversão: 100%</div>
+        <div style="color:#f1f5f9;font-size:clamp(16px,4.5vw,22px);font-weight:700;font-family:'Syne',sans-serif;margin-bottom:4px" id="fin-agressivo">R$30,0M</div>
+        <div style="color:#475569;font-size:10px;font-family:monospace" id="fin-agressivo-conv">Conversão: 100%</div>
       </div>
     </div>
     <div style="margin-top:14px;padding:11px 13px;background:#0f172a;border-radius:8px;color:#475569;font-size:11px;font-family:monospace;line-height:1.6">
-      📌 Investimento médio = <strong style="color:#f59e0b">20,5%</strong> do FUNDEB disponível (40% livre). Varia de <strong style="color:#94a3b8">8,9%</strong> a <strong style="color:#94a3b8">29,5%</strong>.
+      📌 Investimento médio = <strong style="color:#f59e0b" id="fin-fundeb-pct2">18,1%</strong> do FUNDEB disponível (40% livre).
     </div>
   </div>
 </div>
@@ -519,6 +519,34 @@ async function init(){
         bwEl.textContent='-'+fmt(Math.abs(gap)); bwEl.style.color='#f59e0b';
         bwSub.textContent='Falta fechar';
       }
+    }
+
+    // ── FINANCEIRO: % FUNDEB ponderado e cenários ──
+    // % FUNDEB ponderado por alunos: col[6]=alunos, col[10]=%fundeb (no Sheets com col Status)
+    var totAlu=0, totPond=0;
+    pref.forEach(function(r){
+      var al=parseFloat(r[6])||0;
+      var pf=parseFloat((r[10]||'').replace(',','.'))||0;
+      totAlu+=al; totPond+=al*pf;
+    });
+    if(totAlu>0){
+      var fp=(totPond/totAlu*100).toFixed(1)+'%';
+      document.getElementById('fin-fundeb-pct').textContent=fp;
+      document.getElementById('fin-fundeb-pct2').textContent=fp;
+    }
+
+    // Cenários do Dashboard — rows 0=header(L4), 1=Agressivo(L5), 2=Realista(L6), 3=Conservador(L7)
+    // cols: [0]=Cenário [1]=Conversão [2]=Receita
+    if(DASH_ROWS.length>=3){
+      var cenMap={'Agressivo':'fin-agressivo','Realista':'fin-realista','Conservador':'fin-conservador'};
+      DASH_ROWS.slice(0,4).forEach(function(r){
+        var nome=(r[0]||'').trim();
+        var id=cenMap[nome];
+        if(id){
+          document.getElementById(id).textContent=fmt(num(r[2]));
+          document.getElementById(id+'-conv').textContent='Conversão: '+(parseFloat(r[1])*100).toFixed(0)+'%';
+        }
+      });
     }
 
     // ── HEALTH: municípios ativos ──
