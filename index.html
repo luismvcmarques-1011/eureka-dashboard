@@ -160,8 +160,8 @@ footer{border-top:1px solid #0f172a;padding:11px 20px;display:flex;justify-conte
     <div class="kpi" style="border:1px solid #10b98128"><div class="kl">TAM Anual</div><div class="kv" style="color:#10b981">R$2,6B</div><div class="ks">R$400-500/aluno</div></div>
   </div>
   <div class="g3">
-    <div class="kpi" style="border:1px solid #f59e0b28"><div class="kl">SOM Mapeado</div><div class="kv" style="color:#f59e0b">R$26,2M</div><div class="ks">27 municípios</div></div>
-    <div class="kpi" style="border:1px solid #f59e0b28"><div class="kl">Alunos SOM</div><div class="kv" style="color:#f59e0b">59.569</div><div class="ks">do TAM</div></div>
+    <div class="kpi" style="border:1px solid #f59e0b28"><div class="kl">SOM Mapeado</div><div class="kv" style="color:#f59e0b" id="m-som">R$26,2M</div><div class="ks" id="m-mun">27 municípios</div></div>
+    <div class="kpi" style="border:1px solid #f59e0b28"><div class="kl">Alunos SOM</div><div class="kv" style="color:#f59e0b" id="m-alunos">59.569</div><div class="ks">do TAM</div></div>
     <div class="kpi" style="border:1px solid #ef444428"><div class="kl">Penetração</div><div class="kv" style="color:#ef4444" id="m-pen">—</div><div class="ks">ativos/SOM</div></div>
   </div>
   <div class="card">
@@ -245,6 +245,7 @@ const URLS = {
   pipeline:    'https://docs.google.com/spreadsheets/d/e/2PACX-1vTsXRbetOCpr1JHBSsuS-YEjQjLBc5Yq4SfNVvl-4QNlgZ2M1iNrVpt2zey3IvLdz7L_uGM7jnR_DRT/pub?gid=1021192406&single=true&output=csv',
   health:      'https://docs.google.com/spreadsheets/d/e/2PACX-1vTsXRbetOCpr1JHBSsuS-YEjQjLBc5Yq4SfNVvl-4QNlgZ2M1iNrVpt2zey3IvLdz7L_uGM7jnR_DRT/pub?gid=1516720884&single=true&output=csv',
   prefeituras: 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTsXRbetOCpr1JHBSsuS-YEjQjLBc5Yq4SfNVvl-4QNlgZ2M1iNrVpt2zey3IvLdz7L_uGM7jnR_DRT/pub?gid=418220658&single=true&output=csv',
+  dashboard:   'https://docs.google.com/spreadsheets/d/e/2PACX-1vTsXRbetOCpr1JHBSsuS-YEjQjLBc5Yq4SfNVvl-4QNlgZ2M1iNrVpt2zey3IvLdz7L_uGM7jnR_DRT/pub?gid=2090253131&single=true&output=csv',
 };
 
 const COR = {Q:'#ef4444', M:'#f59e0b', F:'#64748b'};
@@ -256,13 +257,32 @@ const FUNIL_ETAPAS = [
   {nome:'R3',       peso:'50%', cor:'#f59e0b'},
   {nome:'Licitação',peso:'85%', cor:'#10b981'},
 ];
+// Regiões do Dashboard com municípios prioritários mapeados
+// cols Dashboard: [0]=Região [7]=# Municípios [8]=Penetração [9]=Alunos SOM [10]=Receita Anual
+const DASHBOARD_REGIOES = [
+  {nome:'RMGSP',        idx:0,  muns:['Osasco','Diadema','São Caetano do Sul','Franco da Rocha','Caieiras','Francisco Morato','Cajamar']},
+  {nome:'Baixada Sant.',idx:2,  muns:['Santos']},
+  {nome:'SJCampos',     idx:3,  muns:['São José dos Campos','Jacareí','São Sebastião','Caraguatatuba','Mogi das Cruzes']},
+  {nome:'Campinas',     idx:5,  muns:['Campinas','Paulínia','Pirassununga','Aguaí','São Carlos']},
+  {nome:'Bauru',        idx:7,  muns:['Itaí','Lins']},
+  {nome:'SJRPreto/Cat', idx:8,  muns:['Catanduva']},
+  {nome:'SJRPreto/Fern',idx:9,  muns:['Fernandópolis']},
+  {nome:'SJRPreto/Votu',idx:10, muns:['Votuporanga']},
+  {nome:'Araçatuba',    idx:11, muns:[]},
+  {nome:'PPrudente',    idx:12, muns:['Presidente Prudente']},
+  {nome:'Araraquara',   idx:14, muns:['São Carlos']},
+  {nome:'Itapeva',      idx:17, muns:['Itaí','Promissão','Penápolis','Novo Horizonte']},
+];
 const REGIOES_MAP = {
-  'Campinas':  ['Campinas','Paulínia','Pirassununga','Aguaí','São Carlos','Promissão','Novo Horizonte','Lins','Penápolis','Catanduva'],
   'RMGSP':     ['Osasco','Diadema','São Caetano do Sul','Franco da Rocha','Caieiras','Francisco Morato','Cajamar'],
-  'SJCampos':  ['São José dos Campos','Jacareí','São Sebastião','Caraguatatuba','Mogi das Cruzes','Santos'],
-  'Bauru':     ['Itaí'],
-  'SJRPreto':  ['Votuporanga','Fernandópolis'],
-  'Araraquara':['Presidente Prudente'],
+  'Baixada Sant.':['Santos'],
+  'SJCampos':  ['São José dos Campos','Jacareí','São Sebastião','Caraguatatuba','Mogi das Cruzes'],
+  'Campinas':  ['Campinas','Paulínia','Pirassununga','Aguaí','São Carlos'],
+  'Bauru':     ['Itaí','Lins'],
+  'SJRPreto':  ['Catanduva','Fernandópolis','Votuporanga'],
+  'PPrudente': ['Presidente Prudente'],
+  'Araraquara':['São Carlos'],
+  'Itapeva':   ['Itaí','Promissão','Penápolis','Novo Horizonte'],
 };
 const CIDADES = [
   {nome:'Pirassununga',   lat:-21.9959,lng:-47.4258,receita:1485000, farol:'Q'},
@@ -398,16 +418,38 @@ function renderVisitas(pref){
 }
 
 // ── REGIÕES ───────────────────────────────────────────────
+let DASH_DATA = []; // dados da aba Dashboard
+
 function renderRegioes(ativosSet){
-  document.getElementById('regioes').innerHTML=Object.entries(REGIOES_MAP).map(([nome,cids])=>{
-    const at=cids.filter(c=>ativosSet.has(c)).length;
-    const rec=CIDADES.filter(c=>cids.includes(c.nome)).reduce((s,c)=>s+c.receita,0);
-    return `<div class="grow" style="border-bottom:1px solid #0f172a">
-      <div style="font-family:'Syne',sans-serif;font-weight:600;font-size:12px">${nome}</div>
-      ${bar(at,6,at>0?'#3b82f6':'#1e293b',6)}
-      <div style="color:#10b981;font-family:monospace;font-size:11px;text-align:right">${fmt(rec)}</div>
-      <div style="text-align:right">${at>0?`<span style="background:#3b82f618;color:#7dd3fc;padding:1px 6px;border-radius:4px;font-size:10px;font-family:monospace">${at}</span>`:'<span style="color:#334155">—</span>'}</div>
-    </div>`;
+  // Linhas do Dashboard: L15=idx0(RGMSP), L16=idx1, ..., L32=idx17, L34=idx19(TOTAL)
+  // idx no array dash (após slice do header em L14):
+  // 0=RGMSP,1=Registro,2=BaixadaSant,3=SJCampos,4=Sorocaba,5=Campinas,
+  // 6=RibPreto,7=Bauru,8=SJRPreto-Cat,9=SJRPreto-Fern,10=SJRPreto-Votu,
+  // 11=Aracatuba,12=PPrudente,13=Marilia,14=Araraquara,15=Barretos,16=Franca,17=Itapeva
+  const rows = DASH_DATA;
+  const regioes = [
+    {nome:'RMGSP',     row:rows[0],  muns:['Osasco','Diadema','São Caetano do Sul','Franco da Rocha','Caieiras','Francisco Morato','Cajamar']},
+    {nome:'SJCampos',  row:rows[3],  muns:['São José dos Campos','Jacareí','São Sebastião','Caraguatatuba','Mogi das Cruzes','Santos']},
+    {nome:'Campinas',  row:rows[5],  muns:['Campinas','Paulínia','Pirassununga','Aguaí','São Carlos','Promissão','Novo Horizonte']},
+    {nome:'Bauru',     row:rows[7],  muns:['Itaí','Lins']},
+    {nome:'SJRPreto',  row:null,     muns:['Catanduva','Fernandópolis','Votuporanga']},
+    {nome:'PPrudente', row:rows[12], muns:['Presidente Prudente']},
+    {nome:'Araraquara',row:rows[14], muns:['São Carlos']},
+    {nome:'Itapeva',   row:rows[17], muns:['Itaí','Promissão','Penápolis','Novo Horizonte']},
+  ];
+
+  document.getElementById('regioes').innerHTML=regioes.map(r=>{
+    const at=r.muns.filter(m=>ativosSet.has(m)).length;
+    // Receita da coluna K (índice 10) do Dashboard
+    const rec=r.row?num(r.row[10]):0;
+    const tot=r.row?parseInt(r.row[7])||0:r.muns.length;
+    const maxAt=Math.max(tot,1);
+    return '<div class="grow" style="border-bottom:1px solid #0f172a">'
+      +'<div style="font-family:'Syne',sans-serif;font-weight:600;font-size:12px">'+r.nome+'</div>'
+      +bar(at,maxAt,at>0?'#3b82f6':'#1e293b',6)
+      +'<div style="color:#10b981;font-family:monospace;font-size:11px;text-align:right">'+fmt(rec)+'</div>'
+      +'<div style="text-align:right">'+(at>0?'<span style="background:#3b82f618;color:#7dd3fc;padding:1px 6px;border-radius:4px;font-size:10px;font-family:monospace">'+at+'</span>':'<span style="color:#334155">—</span>')+'</div>'
+      +'</div>';
   }).join('');
 }
 
@@ -456,12 +498,23 @@ async function init(){
   renderTop10(new Set());
 
   try{
-    const [rP,rH,rPref]=await Promise.all([
-      fetch(URLS.pipeline),fetch(URLS.health),fetch(URLS.prefeituras)
+    const [rP,rH,rPref,rDash]=await Promise.all([
+      fetch(URLS.pipeline),fetch(URLS.health),fetch(URLS.prefeituras),fetch(URLS.dashboard)
     ]);
     const pipe=csv(await rP.text());
     const health=csv(await rH.text());
     const pref=csv(await rPref.text()).slice(1).filter(r=>r[1]&&r[1].trim());
+    const dash=csv(await rDash.text());
+
+    // Dashboard: L14=header(idx0), L15=RGMSP(idx1)... L34=TOTAL(idx20)
+    // slice(1) removes header row, then rows 0=RGMSP...17=Itapeva, 19=TOTAL
+    DASH_DATA = dash.slice(1);
+    const totalRow = DASH_DATA.find(r=>(r[0]||'').toString().toUpperCase().includes('TOTAL'));
+    if(totalRow){
+      document.getElementById('m-som').textContent = fmt(num(totalRow[10]));
+      document.getElementById('m-alunos').textContent = parseInt(totalRow[9]).toLocaleString('pt-BR');
+      document.getElementById('m-mun').textContent = (parseInt(totalRow[7])||27)+' municípios';
+    }
 
     // ── PIPELINE TRACKING: última semana ──
     // Header em L4 (idx 3): [0]=Semana [1]=Receita [3]=Municípios
@@ -512,8 +565,6 @@ async function init(){
     // ── HEALTH: municípios ativos ──
     // L26 (idx 25) = header, L27+ = dados
     // cols: [0]=Região [1]=Município [2]=Farol [3]=Alunos [6]=Receita Pot [7]=Status [8]=Tempo [10]=Ajustada [13]=Ação
-    console.log('Health row 27:', health[26]);
-    console.log('Health row 28:', health[27]);
     const healthMuns=health.slice(26)
       .filter(r=>r[1]&&r[1].trim()&&r[1].trim()!=='Município')
       .map(r=>({
