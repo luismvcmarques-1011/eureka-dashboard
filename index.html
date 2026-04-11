@@ -244,7 +244,7 @@ const REGIOES_DEF = [
   {nome:'SJCampos',   dashIdx:3,  tot:39, muns:['São José dos Campos','Jacareí','São Sebastião','Caraguatatuba','Mogi das Cruzes']},
   {nome:'Campinas',   dashIdx:5,  tot:90, muns:['Campinas','Paulínia','Pirassununga','Aguaí','São Carlos','Promissão','Novo Horizonte']},
   {nome:'Sorocaba',   dashIdx:4,  tot:48, muns:[]},
-  {nome:'Rib.Preto',  dashIdx:6,  tot:25, muns:[]},
+  {nome:'Rib.Preto',  dashIdx:-1, tot:25, muns:[]},
   {nome:'Bauru',      dashIdx:7,  tot:39, muns:['Itaí','Lins']},
   {nome:'SJRPreto',   dashIdx:-1, tot:19, muns:['Catanduva','Fernandópolis','Votuporanga']},
   {nome:'PPrudente',  dashIdx:12, tot:54, muns:['Presidente Prudente']},
@@ -471,7 +471,12 @@ async function init(){
       document.getElementById('m-som').textContent    = fmt(num(totalRow[10]));
       document.getElementById('m-alunos').textContent = Math.round(num(totalRow[9])).toLocaleString('pt-BR');
       document.getElementById('m-mun').textContent    = (parseInt(totalRow[7])||29)+' municípios';
-      document.getElementById('m-pen').textContent    = (parseFloat(totalRow[8])*100).toFixed(2)+'%';
+      // Penetração pode vir como "1,24%" ou "0.01090..."
+      var penRaw = (totalRow[8]||'').toString().replace('%','').replace(',','.');
+      var penVal = parseFloat(penRaw)||0;
+      if(penVal > 1) penVal = penVal; // já é percentual ex: 1.24
+      else penVal = penVal*100;       // é decimal ex: 0.0109
+      document.getElementById('m-pen').textContent = penVal.toFixed(2)+'%';
     }
 
     // ── PIPELINE TRACKING: última semana ──
@@ -516,7 +521,11 @@ async function init(){
     // L26(idx25)=header, L27+(idx26+)=dados
     // cols: [0]=Região [1]=Município [2]=Farol [3]=Alunos [6]=Receita Pot [7]=Status [8]=Tempo [10]=Ajustada [13]=Ação
     var healthMuns = health.slice(26)
-      .filter(function(r){return r[1]&&r[1].trim()&&r[1].trim()!=='Município';})
+      .filter(function(r){
+        var nome = (r[1]||'').trim().replace(/^\u00a0/,'');
+        // Ignorar linhas vazias, header e linhas com valores financeiros (R$) no campo nome
+        return nome && nome!=='Município' && !nome.includes('R$') && !nome.match(/^[0-9]/);
+      })
       .map(function(r){
         return {
           regiao:  r[0]||'',
