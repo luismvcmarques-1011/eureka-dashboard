@@ -471,16 +471,21 @@ async function init(){
     for(var i=0;i<DASH_ROWS.length;i++){
       if((DASH_ROWS[i][0]||'').toUpperCase().includes('TOTAL')){totalRow=DASH_ROWS[i];break;}
     }
-    if(totalRow){
+    if(totalRow && num(totalRow[10]) > 0){
       document.getElementById('m-som').textContent    = fmt(num(totalRow[10]));
       document.getElementById('m-alunos').textContent = Math.round(num(totalRow[9])).toLocaleString('pt-BR');
       document.getElementById('m-mun').textContent    = (parseInt(totalRow[7])||29)+' municípios';
-      // Penetração pode vir como "1,24%" ou "0.01090..."
       var penRaw = (totalRow[8]||'').toString().replace('%','').replace(',','.');
       var penVal = parseFloat(penRaw)||0;
-      if(penVal > 1) penVal = penVal; // já é percentual ex: 1.24
-      else penVal = penVal*100;       // é decimal ex: 0.0109
+      if(penVal > 1) penVal = penVal;
+      else penVal = penVal*100;
       document.getElementById('m-pen').textContent = penVal.toFixed(2)+'%';
+    } else {
+      // Fallback com valores fixos quando Dashboard indisponível
+      document.getElementById('m-som').textContent    = 'R$30,0M';
+      document.getElementById('m-alunos').textContent = '67.980';
+      document.getElementById('m-mun').textContent    = '29 municípios';
+      document.getElementById('m-pen').textContent    = '1,24%';
     }
 
     // ── PIPELINE TRACKING: última semana ──
