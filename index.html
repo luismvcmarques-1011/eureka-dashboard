@@ -239,19 +239,19 @@ const FUNIL_ETAPAS = [
 // 10=SJRPreto-Votu,11=Araçatuba,12=PPrudente,13=Marilia,14=Araraquara,
 // 15=Barretos,16=Franca,17=Itapeva
 const REGIOES_DEF = [
-  {nome:'RMGSP',      dashIdx:0,  tot:39, muns:['Osasco','Diadema','São Caetano do Sul','Franco da Rocha','Caieiras','Francisco Morato','Cajamar']},
-  {nome:'Baixada S.', dashIdx:2,  tot:9,  muns:['Santos']},
-  {nome:'SJCampos',   dashIdx:3,  tot:39, muns:['São José dos Campos','Jacareí','São Sebastião','Caraguatatuba','Mogi das Cruzes']},
-  {nome:'Campinas',   dashIdx:5,  tot:90, muns:['Campinas','Paulínia','Pirassununga','Aguaí','São Carlos','Promissão','Novo Horizonte']},
-  {nome:'Sorocaba',   dashIdx:4,  tot:48, muns:[]},
-  {nome:'Rib.Preto',  dashIdx:-1, tot:25, muns:[]},
-  {nome:'Bauru',      dashIdx:7,  tot:39, muns:['Itaí','Lins']},
-  {nome:'SJRPreto',   dashIdx:-1, tot:19, muns:['Catanduva','Fernandópolis','Votuporanga']},
-  {nome:'PPrudente',  dashIdx:12, tot:54, muns:['Presidente Prudente']},
-  {nome:'Araraquara', dashIdx:14, tot:26, muns:[]},
-  {nome:'Barretos',   dashIdx:15, tot:19, muns:[]},
-  {nome:'Franca',     dashIdx:16, tot:23, muns:[]},
-  {nome:'Itapeva',    dashIdx:17, tot:32, muns:['Penápolis','Novo Horizonte']},
+  {nome:'RMGSP',      rec:9829500,  tot:39, muns:['Osasco','Diadema','São Caetano do Sul','Franco da Rocha','Caieiras','Francisco Morato','Cajamar']},
+  {nome:'Baixada S.', rec:1120600,  tot:9,  muns:['Santos']},
+  {nome:'SJCampos',   rec:7383500,  tot:39, muns:['São José dos Campos','Jacareí','São Sebastião','Caraguatatuba','Mogi das Cruzes']},
+  {nome:'Campinas',   rec:4426500,  tot:90, muns:['Campinas','Paulínia','Pirassununga','Aguaí','São Carlos','Promissão','Novo Horizonte']},
+  {nome:'Sorocaba',   rec:0,        tot:48, muns:[]},
+  {nome:'Rib.Preto',  rec:0,        tot:25, muns:[]},
+  {nome:'Bauru',      rec:798700,   tot:39, muns:['Itaí','Lins']},
+  {nome:'SJRPreto',   rec:854150,   tot:19, muns:['Catanduva','Fernandópolis','Votuporanga']},
+  {nome:'PPrudente',  rec:595150,   tot:54, muns:['Presidente Prudente']},
+  {nome:'Araraquara', rec:660000,   tot:26, muns:[]},
+  {nome:'Barretos',   rec:0,        tot:19, muns:[]},
+  {nome:'Franca',     rec:0,        tot:23, muns:[]},
+  {nome:'Itapeva',    rec:402300,   tot:32, muns:['Penápolis','Novo Horizonte']},
 ];
 
 const CIDADES = [
@@ -393,8 +393,7 @@ function renderVisitas(sqlMuns){
 function renderRegioes(ativosSet){
   document.getElementById('regioes').innerHTML=REGIOES_DEF.map(function(r){
     var at=r.muns.filter(function(m){return ativosSet.has(m);}).length;
-    var row=r.dashIdx>=0?DASH_ROWS[r.dashIdx]:null;
-    var rec=row?num(row[10]):0;
+    var rec=r.rec||0;
     var tot=r.tot;
     var sel=r.muns.length; // cidades selecionadas no SOM
     return '<div class="grow" style="border-bottom:1px solid #0f172a">'
