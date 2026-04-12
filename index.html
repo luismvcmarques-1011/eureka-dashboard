@@ -471,7 +471,7 @@ async function init(){
     for(var i=0;i<DASH_ROWS.length;i++){
       if((DASH_ROWS[i][0]||'').toUpperCase().includes('TOTAL')){totalRow=DASH_ROWS[i];break;}
     }
-    if(totalRow && num(totalRow[10]) > 0){
+    if(false){
       document.getElementById('m-som').textContent    = fmt(num(totalRow[10]));
       document.getElementById('m-alunos').textContent = Math.round(num(totalRow[9])).toLocaleString('pt-BR');
       document.getElementById('m-mun').textContent    = (parseInt(totalRow[7])||29)+' municípios';
